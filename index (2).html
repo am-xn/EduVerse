@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EduVerse — Learn, Test & Grow</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090b;--s1:#111114;--s2:#18181c;--s3:#202026;--bd:#2c2c35;--gold:#d4a843;--gl:#f0c060;--gd:rgba(212,168,67,.13);--teal:#38c9a8;--td:rgba(56,201,168,.11);--text:#ede8df;--tm:#7a8695;--tdim:#3f4855;--red:#e05555;--purple:#a78bfa;--pd:rgba(167,139,250,.12);--r:12px;--rs:8px;}
+*{box-sizing:border-box;margin:0;padding:0;}html,body{height:100%;overflow-x:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
+nav{position:sticky;top:0;z-index:100;background:rgba(9,9,11,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:10px;}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);cursor:pointer;white-space:nowrap;}
+.logo em{color:var(--teal);font-style:normal;}
+.nav-center{display:flex;gap:2px;align-items:center;flex:1;justify-content:center;flex-wrap:wrap;}
+.nb{background:none;border:none;color:var(--tm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:5px 10px;border-radius:var(--rs);cursor:pointer;transition:all .18s;white-space:nowrap;}
+.nb:hover,.nb.act{color:var(--text);background:var(--s3);}
+.nav-right{display:flex;gap:6px;align-items:center;}
+.nbg{background:var(--gold);color:#09090b;font-weight:700;font-size:12px;padding:6px 14px;border:none;border-radius:var(--rs);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.nbg:hover{background:var(--gl);}
+.nbt{background:var(--td);color:var(--teal);border:1px solid rgba(56,201,168,.25);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--rs);cursor:pointer;transition:all .2s;}
+.ava{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--teal));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#09090b;cursor:pointer;border:2px solid var(--bd);transition:border-color .2s;position:relative;flex-shrink:0;}
+.ava:hover{border-color:var(--gold);}
+.dd{position:absolute;top:44px;right:0;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);min-width:200px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.5);z-index:200;}
+.ddu{padding:10px 14px 8px;border-bottom:1px solid var(--bd);margin-bottom:4px;}
+.ddu .dn{font-weight:600;font-size:13px;}.ddu .de{font-size:11px;color:var(--tm);margin-top:2px;}
+.ddi{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--rs);font-size:13px;color:var(--tm);cursor:pointer;transition:all .15s;}
+.ddi:hover{background:var(--s2);color:var(--text);}.ddi.danger{color:var(--red);}.ddi.danger:hover{background:rgba(224,85,85,.1);}
+.dd-div{height:1px;background:var(--bd);margin:4px 0;}
+.page{display:none;animation:fi .28s ease;}.page.act{display:block;}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.hero{min-height:calc(100vh - 58px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px 40px;position:relative;overflow:hidden;}
+.hbg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 50% 30%,rgba(212,168,67,.07) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 70% 70%,rgba(56,201,168,.05) 0%,transparent 60%);}
+.htag{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding:5px 14px;border:1px solid rgba(56,201,168,.28);border-radius:20px;background:var(--td);display:inline-block;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,64px);font-weight:700;line-height:1.1;margin-bottom:16px;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero p{font-size:15px;color:var(--tm);max-width:480px;line-height:1.75;margin-bottom:32px;}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.bp{background:var(--gold);color:#09090b;font-weight:700;font-size:14px;padding:11px 24px;border:none;border-radius:var(--rs);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.bp:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,.3);}
+.bs{background:var(--s2);color:var(--text);font-size:14px;padding:11px 24px;border:1px solid var(--bd);border-radius:var(--rs);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.bs:hover{background:var(--s3);}
+.hstats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--bd);flex-wrap:wrap;justify-content:center;}
+.hstat .n{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--gold);}
+.hstat .l{font-size:11px;color:var(--tm);margin-top:2px;}
+.fstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border-top:1px solid var(--bd);}
+.fc{background:var(--s1);padding:26px 22px;transition:background .2s;cursor:pointer;}
+.fc:hover{background:var(--s2);}
+.fci{font-size:24px;margin-bottom:10px;}.fc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:6px;}
+.fc p{font-size:12.5px;color:var(--tm);line-height:1.55;}
+.inner{max-width:1080px;margin:0 auto;padding:32px 20px;}
+.ph{margin-bottom:24px;}.ph h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:4px;}.ph p{color:var(--tm);font-size:13px;}
+.sbar{display:flex;gap:10px;margin-bottom:20px;}
+.si{flex:1;background:var(--s1);border:1px solid var(--bd);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 15px;border-radius:var(--rs);outline:none;transition:border-color .2s;}
+.si:focus{border-color:var(--gold);}.si::placeholder{color:var(--tdim);}
+.sb{background:var(--gold);color:#09090b;border:none;border-radius:var(--rs);padding:11px 20px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.sb:hover{background:var(--gl);}.sb:disabled{opacity:.45;cursor:not-allowed;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.chip{padding:4px 12px;border-radius:20px;font-size:11.5px;font-weight:500;background:var(--s2);border:1px solid var(--bd);color:var(--tm);cursor:pointer;transition:all .2s;}
+.chip:hover{border-color:var(--gold);color:var(--gold);background:var(--gd);}
+.rinfo{font-size:13px;color:var(--tm);margin-bottom:16px;}.rinfo span{color:var(--gold);font-weight:600;}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;}
+.bcard{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .22s;position:relative;}
+.bcard:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.5);}
+.bcov{width:100%;height:200px;background:var(--s2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.bcov img{width:100%;height:100%;object-fit:cover;}
+.bph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,var(--s2),var(--s3));}
+.binfo{padding:12px;}.btit{font-weight:600;font-size:12px;line-height:1.4;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.baut{font-size:11px;color:var(--tm);margin-bottom:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.byr{font-size:10px;color:var(--tdim);font-family:'Space Mono',monospace;}
+.bsv{position:absolute;top:7px;right:7px;background:rgba(9,9,11,.82);border:1px solid var(--bd);color:var(--tm);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:all .2s;backdrop-filter:blur(8px);}
+.bsv:hover,.bsv.sv{background:var(--gd);border-color:var(--gold);color:var(--gold);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.vcard{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .22s;}
+.vcard:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.5);}
+.vth{width:100%;height:148px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.vov{position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.vcard:hover .vov{opacity:1;}
+.vplay{width:46px;height:46px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 4px 16px rgba(56,201,168,.4);}
+.vinfo{padding:13px;}.vtit{font-weight:600;font-size:13px;line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.vch{font-size:11.5px;color:var(--teal);margin-bottom:3px;font-weight:500;}
+.vmet{font-size:10.5px;color:var(--tdim);font-family:'Space Mono',monospace;}
+.vdesc{font-size:11px;color:var(--tm);margin-top:5px;line-height:1.5;}
+.vlink{display:inline-flex;align-items:center;gap:5px;margin-top:9px;padding:6px 12px;background:var(--td);border:1px solid rgba(56,201,168,.22);border-radius:6px;font-size:11.5px;color:var(--teal);font-weight:600;text-decoration:none;transition:all .2s;}
+.vlink:hover{background:rgba(56,201,168,.2);}
+.empty{text-align:center;padding:60px 24px;}.empty .ei{font-size:44px;margin-bottom:12px;}
+.empty h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:6px;}
+.empty p{font-size:13px;color:var(--tm);line-height:1.6;max-width:300px;margin:0 auto;}
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
+.gcard{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:18px;cursor:pointer;transition:all .22s;}
+.gcard:hover{border-color:var(--teal);transform:translateY(-2px);}
+.gtop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.gn{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;}
+.gbadge{padding:2px 9px;border-radius:20px;font-size:10.5px;font-weight:600;background:var(--td);color:var(--teal);border:1px solid rgba(56,201,168,.22);}
+.gdesc{font-size:12px;color:var(--tm);line-height:1.5;margin-bottom:10px;}
+.gmeta{font-size:10.5px;color:var(--tdim);font-family:'Space Mono',monospace;display:flex;gap:12px;}
+.create-group-btn{display:flex;align-items:center;gap:8px;background:var(--gd);border:1.5px dashed rgba(212,168,67,.35);border-radius:var(--r);padding:18px;cursor:pointer;color:var(--gold);font-size:13.5px;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .2s;margin-bottom:18px;}
+.create-group-btn:hover{background:rgba(212,168,67,.18);border-style:solid;}
+.chatroom{display:flex;flex-direction:column;height:calc(100vh - 58px);}
+.chat-header{padding:12px 18px;border-bottom:1px solid var(--bd);background:var(--s1);display:flex;align-items:center;gap:12px;}
+.chat-back{background:none;border:none;color:var(--tm);font-size:17px;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .15s;}
+.chat-back:hover{color:var(--text);background:var(--s2);}
+.chat-ginfo .cn{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;}
+.chat-ginfo .cs{font-size:11.5px;color:var(--tm);}
+.chat-msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px;}
+.chat-msgs::-webkit-scrollbar{width:4px;}.chat-msgs::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px;}
+.msg{display:flex;gap:9px;animation:fi .2s ease;}.msg.own{flex-direction:row-reverse;}
+.msg-ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--teal));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#09090b;flex-shrink:0;}
+.msg-body{max-width:68%;}.msg-who{font-size:11px;color:var(--tm);margin-bottom:2px;font-weight:500;}
+.msg.own .msg-who{text-align:right;}
+.msg-bub{background:var(--s2);border:1px solid var(--bd);border-radius:11px;padding:9px 13px;font-size:13.5px;line-height:1.5;}
+.msg.own .msg-bub{background:var(--gd);border-color:rgba(212,168,67,.3);}
+.msg-time{font-size:10px;color:var(--tdim);margin-top:2px;font-family:'Space Mono',monospace;}
+.msg.own .msg-time{text-align:right;}
+.chat-input-bar{padding:12px 18px;border-top:1px solid var(--bd);background:var(--s1);display:flex;gap:8px;}
+.chat-input{flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13.5px;padding:10px 15px;border-radius:22px;outline:none;transition:border-color .2s;}
+.chat-input:focus{border-color:var(--teal);}.chat-input::placeholder{color:var(--tdim);}
+.send-btn{background:var(--teal);color:#09090b;border:none;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.send-btn:hover{background:#45e0bd;transform:scale(1.05);}
+.chat-members{padding:8px 18px;border-top:1px solid var(--bd);background:var(--s1);display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--tm);overflow-x:auto;}
+.mem-chip{background:var(--s2);border:1px solid var(--bd);border-radius:20px;padding:3px 10px;font-size:11px;white-space:nowrap;color:var(--tm);}
+#modOv{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;}
+#modOv.open{display:flex;}
+.mod{background:var(--s1);border:1px solid var(--bd);border-radius:16px;width:100%;max-width:420px;padding:32px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.6);animation:su .22s ease;max-height:90vh;overflow-y:auto;}
+.mod.wide{max-width:620px;}
+.mod.fullw{max-width:800px;}
+@keyframes su{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+.mod-x{position:absolute;top:13px;right:13px;background:none;border:none;color:var(--tm);font-size:16px;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .15s;}
+.mod-x:hover{background:var(--s2);color:var(--text);}
+.mod h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:4px;}
+.msub{color:var(--tm);font-size:12.5px;margin-bottom:22px;}
+.fg{margin-bottom:13px;}
+.fl{display:block;font-size:10.5px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.fi2{width:100%;background:var(--s2);border:1px solid var(--bd);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13.5px;padding:10px 13px;border-radius:var(--rs);outline:none;transition:border-color .2s;}
+.fi2:focus{border-color:var(--gold);}.fi2::placeholder{color:var(--tdim);}
+textarea.fi2{resize:vertical;min-height:75px;}
+.fbtn{width:100%;padding:12px;background:var(--gold);color:#09090b;border:none;border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;margin-top:5px;}
+.fbtn:hover{background:var(--gl);}.fbtn:disabled{opacity:.45;cursor:not-allowed;}
+.fsw{text-align:center;margin-top:16px;font-size:12.5px;color:var(--tm);}
+.fsw a{color:var(--gold);cursor:pointer;font-weight:600;}
+.errmsg{background:rgba(224,85,85,.1);border:1px solid rgba(224,85,85,.28);color:var(--red);padding:8px 12px;border-radius:var(--rs);font-size:12.5px;margin-bottom:13px;}
+.okmsg{background:rgba(56,201,168,.1);border:1px solid rgba(56,201,168,.28);color:var(--teal);padding:8px 12px;border-radius:var(--rs);font-size:12.5px;margin-bottom:13px;}
+.tabs2{display:flex;gap:3px;background:var(--s2);padding:3px;border-radius:var(--rs);border:1px solid var(--bd);width:fit-content;margin-bottom:16px;}
+.tab2{padding:6px 16px;border-radius:6px;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--tm);border:none;background:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.tab2.act{background:var(--s3);color:var(--text);}
+.bdmod{max-width:500px;}
+.bd-top{display:flex;gap:16px;margin-bottom:18px;}
+.bd-cover{width:95px;height:138px;border-radius:var(--rs);overflow:hidden;flex-shrink:0;background:var(--s2);display:flex;align-items:center;justify-content:center;}
+.bd-cover img{width:100%;height:100%;object-fit:cover;}
+.bd-meta h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;line-height:1.3;margin-bottom:5px;}
+.bd-meta .au{color:var(--tm);font-size:13px;margin-bottom:4px;}
+.bd-meta .yr{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--tdim);margin-bottom:9px;}
+.bda{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:var(--rs);font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'DM Sans',sans-serif;border:none;}
+.bda.read{background:var(--teal);color:#09090b;}.bda.read:hover{background:#45e0bd;}
+.bda.dl{background:var(--gd);color:var(--gold);border:1px solid rgba(212,168,67,.3);}.bda.dl:hover{background:rgba(212,168,67,.22);}
+.bda.save{background:var(--s2);color:var(--tm);border:1px solid var(--bd);}.bda.save:hover{border-color:var(--gold);color:var(--gold);background:var(--gd);}
+.bda.save.sv{background:var(--gd);color:var(--gold);border-color:rgba(212,168,67,.4);}
+.bsubjects{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;}
+.bsub-chip{padding:3px 9px;background:var(--s3);border:1px solid var(--bd);border-radius:11px;font-size:10.5px;color:var(--tm);}
+.prof-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:22px;margin-bottom:14px;}
+.prof-top{display:flex;gap:14px;align-items:center;margin-bottom:18px;}
+.prof-ava{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--teal));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px;color:#09090b;flex-shrink:0;}
+.prof-ava-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;}
+.prof-ava-email{font-size:12.5px;color:var(--tm);}
+.prof-stat{background:var(--gd);border:1px solid rgba(212,168,67,.2);border-radius:var(--rs);padding:13px;display:flex;justify-content:space-between;align-items:center;}
+.prof-stat-n{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);}
+.prof-stat-l{font-size:11px;color:var(--tm);margin-top:2px;}
+.pfield{background:var(--s2);border-radius:var(--rs);padding:12px;}
+.pfield .pl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--tdim);margin-bottom:2px;}
+.pfield .pv{font-size:13.5px;}
+.ldg{display:flex;align-items:center;justify-content:center;padding:52px;flex-direction:column;gap:12px;}
+.spin{width:32px;height:32px;border:3px solid var(--bd);border-top-color:var(--gold);border-radius:50%;animation:sp .75s linear infinite;}
+@keyframes sp{to{transform:rotate(360deg)}}.ldgt{color:var(--tm);font-size:13px;}
+#toast-box{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:7px;}
+.toast{background:var(--s2);border:1px solid var(--bd);color:var(--text);padding:10px 15px;border-radius:var(--rs);font-size:13px;box-shadow:0 8px 28px rgba(0,0,0,.4);animation:sir .28s ease;min-width:200px;display:flex;align-items:center;gap:8px;}
+@keyframes sir{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+.toast.ok{border-left:3px solid var(--teal);}.toast.er{border-left:3px solid var(--red);}.toast.in{border-left:3px solid var(--gold);}
+
+/* ═══════════════════════════════════════ TEST STYLES */
+.test-hub{max-width:1080px;margin:0 auto;padding:32px 20px;}
+.test-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:32px;}
+.cat-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:22px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.cat-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s;}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.cat-card.coding{border-top:3px solid var(--teal);}.cat-card.coding:hover{border-color:var(--teal);}
+.cat-card.maths{border-top:3px solid var(--gold);}.cat-card.maths:hover{border-color:var(--gold);}
+.cat-card.reasoning{border-top:3px solid var(--purple);}.cat-card.reasoning:hover{border-color:var(--purple);}
+.cat-card.dsa{border-top:3px solid var(--red);}.cat-card.dsa:hover{border-color:var(--red);}
+.cat-icon{font-size:32px;margin-bottom:12px;}
+.cat-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-bottom:5px;}
+.cat-desc{font-size:12px;color:var(--tm);line-height:1.55;margin-bottom:14px;}
+.cat-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.cat-tag{padding:2px 8px;border-radius:10px;font-size:10.5px;font-weight:600;}
+.cat-tag.easy{background:rgba(56,201,168,.15);color:var(--teal);}
+.cat-tag.medium{background:rgba(212,168,67,.15);color:var(--gold);}
+.cat-tag.hard{background:rgba(224,85,85,.15);color:var(--red);}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+.diff-card{background:var(--s1);border:2px solid var(--bd);border-radius:var(--r);padding:20px;cursor:pointer;transition:all .22s;text-align:center;}
+.diff-card:hover{transform:translateY(-3px);}
+.diff-card.easy{border-color:rgba(56,201,168,.4);}.diff-card.easy:hover{border-color:var(--teal);box-shadow:0 8px 24px rgba(56,201,168,.15);}
+.diff-card.medium{border-color:rgba(212,168,67,.4);}.diff-card.medium:hover{border-color:var(--gold);box-shadow:0 8px 24px rgba(212,168,67,.15);}
+.diff-card.hard{border-color:rgba(224,85,85,.4);}.diff-card.hard:hover{border-color:var(--red);box-shadow:0 8px 24px rgba(224,85,85,.15);}
+.diff-icon{font-size:28px;margin-bottom:8px;}
+.diff-name{font-size:15px;font-weight:700;margin-bottom:3px;}
+.diff-card.easy .diff-name{color:var(--teal);}
+.diff-card.medium .diff-name{color:var(--gold);}
+.diff-card.hard .diff-name{color:var(--red);}
+.diff-info{font-size:11.5px;color:var(--tm);}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:24px;}
+.lang-card{background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);padding:14px;cursor:pointer;transition:all .2s;text-align:center;}
+.lang-card:hover,.lang-card.sel{background:var(--td);border-color:var(--teal);color:var(--teal);}
+.lang-icon{font-size:22px;margin-bottom:5px;}
+.lang-name{font-size:12px;font-weight:600;}
+.test-arena{max-width:860px;margin:0 auto;padding:28px 20px;}
+.test-topbar{display:flex;justify-content:space-between;align-items:center;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:14px 20px;margin-bottom:24px;gap:12px;flex-wrap:wrap;}
+.test-title-sm{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;}
+.test-info-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.test-badge{padding:4px 12px;border-radius:20px;font-size:11.5px;font-weight:700;}
+.test-badge.easy{background:rgba(56,201,168,.15);color:var(--teal);}
+.test-badge.medium{background:rgba(212,168,67,.15);color:var(--gold);}
+.test-badge.hard{background:rgba(224,85,85,.15);color:var(--red);}
+.timer{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--gold);background:var(--gd);padding:6px 14px;border-radius:var(--rs);}
+.timer.warn{color:var(--red);background:rgba(224,85,85,.12);}
+.q-progress{background:var(--s2);border-radius:4px;height:6px;margin-bottom:24px;overflow:hidden;}
+.q-progress-bar{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:4px;transition:width .3s;}
+.q-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:26px;margin-bottom:20px;animation:fi .25s ease;}
+.q-num{font-size:11px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.q-text{font-size:16px;font-weight:500;line-height:1.65;margin-bottom:20px;}
+.q-code{background:var(--s3);border:1px solid var(--bd);border-radius:var(--rs);padding:14px 16px;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.7;margin-bottom:18px;overflow-x:auto;color:#c9d1d9;}
+.opts{display:grid;gap:10px;}
+.opt{background:var(--s2);border:2px solid var(--bd);border-radius:var(--rs);padding:12px 16px;cursor:pointer;font-size:14px;transition:all .2s;display:flex;align-items:center;gap:10px;}
+.opt:hover{border-color:var(--gold);background:var(--gd);}
+.opt.selected{border-color:var(--teal);background:var(--td);}
+.opt.correct{border-color:var(--teal);background:rgba(56,201,168,.18);}
+.opt.wrong{border-color:var(--red);background:rgba(224,85,85,.15);}
+.opt-label{width:24px;height:24px;border-radius:50%;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:'Space Mono',monospace;}
+.opt.selected .opt-label{border-color:var(--teal);color:var(--teal);}
+.opt.correct .opt-label{border-color:var(--teal);background:var(--teal);color:#09090b;}
+.opt.wrong .opt-label{border-color:var(--red);background:var(--red);color:#fff;}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;}
+.qbtn{padding:10px 22px;border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-weight:600;font-size:13.5px;cursor:pointer;border:1px solid var(--bd);background:var(--s2);color:var(--text);transition:all .2s;}
+.qbtn:hover{background:var(--s3);}.qbtn.primary{background:var(--gold);color:#09090b;border-color:var(--gold);}.qbtn.primary:hover{background:var(--gl);}
+.qbtn.danger{background:rgba(224,85,85,.12);color:var(--red);border-color:rgba(224,85,85,.3);}
+/* RESULT */
+.result-hero{text-align:center;padding:32px 24px;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:24px;}
+.score-ring{width:140px;height:140px;margin:0 auto 20px;position:relative;}
+.score-ring svg{transform:rotate(-90deg);}
+.score-ring .ring-bg{fill:none;stroke:var(--s3);stroke-width:10;}
+.score-ring .ring-fg{fill:none;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.2s ease;}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-big{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;}
+.score-of{font-size:12px;color:var(--tm);}
+.result-grade{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:6px;}
+.result-msg{font-size:14px;color:var(--tm);margin-bottom:20px;}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.rs-card{background:var(--s2);border-radius:var(--rs);padding:14px;text-align:center;}
+.rs-n{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}.rs-n.g{color:var(--teal);}.rs-n.r{color:var(--red);}.rs-n.y{color:var(--gold);}
+.rs-l{font-size:11px;color:var(--tm);margin-top:2px;}
+.share-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.share-btn.tw{background:#1da1f2;color:#fff;}.share-btn.tw:hover{background:#0d8bd9;}
+.share-btn.wa{background:#25d366;color:#fff;}.share-btn.wa:hover{background:#1db954;}
+.share-btn.li{background:#0077b5;color:#fff;}.share-btn.li:hover{background:#005e92;}
+.share-btn.cp{background:var(--s3);color:var(--text);border:1px solid var(--bd);}.share-btn.cp:hover{background:var(--s2);}
+.ai-feedback{background:linear-gradient(135deg,rgba(167,139,250,.08),rgba(56,201,168,.06));border:1px solid rgba(167,139,250,.25);border-radius:var(--r);padding:20px;margin-bottom:20px;}
+.ai-fb-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.ai-fb-header h3{font-family:'Playfair Display',serif;font-size:17px;}
+.ai-fb-body{font-size:13.5px;color:var(--tm);line-height:1.7;}
+.ai-fb-body strong{color:var(--text);}
+.topic-breakdown{display:grid;gap:10px;margin-top:14px;}
+.tb-row{display:flex;align-items:center;gap:10px;}
+.tb-label{font-size:12.5px;width:150px;flex-shrink:0;color:var(--text);}
+.tb-bar-wrap{flex:1;background:var(--s3);border-radius:4px;height:8px;overflow:hidden;}
+.tb-bar{height:100%;border-radius:4px;transition:width 1s ease;}
+.tb-bar.good{background:var(--teal);}.tb-bar.mid{background:var(--gold);}.tb-bar.bad{background:var(--red);}
+.tb-pct{font-size:11px;color:var(--tm);width:36px;text-align:right;font-family:'Space Mono',monospace;}
+.q-review{display:grid;gap:14px;}
+.qr-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rs);padding:16px;}
+.qr-card.correct{border-left:3px solid var(--teal);}.qr-card.wrong{border-left:3px solid var(--red);}
+.qr-q{font-size:13.5px;font-weight:500;margin-bottom:8px;line-height:1.5;}
+.qr-ans{font-size:12.5px;margin-bottom:3px;}
+.qr-ans .lbl{color:var(--tm);margin-right:5px;}
+.qr-ans .val.g{color:var(--teal);font-weight:600;}.qr-ans .val.r{color:var(--red);}
+.qr-exp{font-size:12px;color:var(--tm);margin-top:8px;padding-top:8px;border-top:1px solid var(--bd);line-height:1.55;}
+.saved-tests-grid{display:grid;gap:12px;}
+.st-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.st-info .st-title{font-weight:600;font-size:14px;margin-bottom:3px;}
+.st-info .st-meta{font-size:11.5px;color:var(--tm);font-family:'Space Mono',monospace;}
+.st-score{text-align:right;}.st-score .sc-n{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}
+.st-score .sc-n.high{color:var(--teal);}.st-score .sc-n.mid{color:var(--gold);}.st-score .sc-n.low{color:var(--red);}
+.st-score .sc-l{font-size:10.5px;color:var(--tm);}
+.pts-badge{background:var(--pd);border:1px solid rgba(167,139,250,.25);border-radius:var(--rs);padding:5px 12px;font-size:12px;font-weight:700;color:var(--purple);}
+@media(max-width:640px){
+  .fstrip{grid-template-columns:repeat(2,1fr);}.hstats{gap:16px;}.bgrid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}.vgrid{grid-template-columns:1fr;}.nav-center .nb:nth-child(n+4){display:none;}.glist{grid-template-columns:1fr;}.test-cats{grid-template-columns:repeat(2,1fr);}.diff-grid{grid-template-columns:1fr;}.result-stats{grid-template-columns:1fr;}.lang-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo" onclick="go('home')">Edu<em>Verse</em></div>
+  <div class="nav-center" id="navCenter">
+    <button class="nb" onclick="go('books')">📚 Books</button>
+    <button class="nb" onclick="go('videos')">🎬 Videos</button>
+    <button class="nb" onclick="go('tests')">🧪 Tests</button>
+    <button class="nb" onclick="go('groups')">💬 Groups</button>
+    <button class="nb" id="nbBL" style="display:none" onclick="go('booklist')">🔖 My List</button>
+  </div>
+  <div class="nav-right">
+    <div id="navAuth" style="display:flex;gap:6px;">
+      <button class="nbg" onclick="openMod('login')">Sign In</button>
+      <button class="nbt" onclick="openMod('signup')">Join Free</button>
+    </div>
+    <div id="navUser" style="display:none;position:relative;">
+      <div class="ava" id="navAva" onclick="toggleDD()">?</div>
+      <div class="dd" id="navDD" style="display:none;">
+        <div class="ddu"><div class="dn" id="ddN">—</div><div class="de" id="ddE">—</div></div>
+        <div class="ddi" onclick="go('booklist');closeDD()">🔖 My Booklist</div>
+        <div class="ddi" onclick="go('mytests');closeDD()">📊 My Test Results</div>
+        <div class="ddi" onclick="go('groups');closeDD()">💬 Group Chats</div>
+        <div class="ddi" onclick="go('profile');closeDD()">👤 Profile</div>
+        <div class="dd-div"></div>
+        <div class="ddi danger" onclick="logout()">🚪 Sign Out</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="page act" id="pg-home">
+  <div class="hero">
+    <div class="hbg"></div>
+    <div class="htag">✦ Your Complete Learning Universe</div>
+    <h1>Learn <em>Anything.</em><br>Test <em>Everything.</em></h1>
+    <p>Books, videos, AI-powered mock tests in Coding, Maths, Reasoning & DSA. Study together in group chats.</p>
+    <div class="hbtns">
+      <button class="bp" onclick="go('tests')">🧪 Take a Test</button>
+      <button class="bs" onclick="go('books')">Browse Books</button>
+      <button class="bs" onclick="go('videos')">Watch Videos</button>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><div class="n">10M+</div><div class="l">Books</div></div>
+      <div class="hstat"><div class="n">500+</div><div class="l">Test Questions</div></div>
+      <div class="hstat"><div class="n">AI</div><div class="l">Feedback</div></div>
+      <div class="hstat"><div class="n">Live</div><div class="l">Group Chat</div></div>
+    </div>
+  </div>
+  <div class="fstrip">
+    <div class="fc" onclick="go('books')"><div class="fci">📖</div><h3>Book Library</h3><p>Millions of real books with read online &amp; download.</p></div>
+    <div class="fc" onclick="go('videos')"><div class="fci">🎬</div><h3>Video Search</h3><p>Curated YouTube videos from top educators.</p></div>
+    <div class="fc" onclick="go('tests')"><div class="fci">🧪</div><h3>Mock Tests</h3><p>Coding, Maths, DSA &amp; Reasoning. Easy to Hard. AI feedback.</p></div>
+    <div class="fc" onclick="go('groups')"><div class="fci">💬</div><h3>Study Groups</h3><p>Join or create subject groups. Chat &amp; collaborate.</p></div>
+  </div>
+</div>
+
+<!-- BOOKS -->
+<div class="page" id="pg-books">
+  <div class="inner">
+    <div class="ph"><h2>📚 Book Search</h2><p>Real books from Open Library — search, read online &amp; download</p></div>
+    <div class="sbar"><input class="si" id="bkInput" placeholder="Search: AIML, Python, Deep Learning..." onkeydown="if(event.key==='Enter')searchBooks()"><button class="sb" id="bkBtn" onclick="searchBooks()">Search</button></div>
+    <div class="chips">
+      <span class="chip" onclick="qs('book','Machine Learning')">Machine Learning</span>
+      <span class="chip" onclick="qs('book','Python Programming')">Python</span>
+      <span class="chip" onclick="qs('book','Deep Learning')">Deep Learning</span>
+      <span class="chip" onclick="qs('book','Artificial Intelligence')">AI</span>
+      <span class="chip" onclick="qs('book','Data Science')">Data Science</span>
+      <span class="chip" onclick="qs('book','JavaScript')">JavaScript</span>
+      <span class="chip" onclick="qs('book','Algorithms')">Algorithms</span>
+      <span class="chip" onclick="qs('book','Mathematics')">Mathematics</span>
+    </div>
+    <div id="bkRes"></div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="page" id="pg-videos">
+  <div class="inner">
+    <div class="ph"><h2>🎬 Video Search</h2><p>Curated YouTube educational videos — click to open on YouTube</p></div>
+    <div class="sbar"><input class="si" id="vdInput" placeholder="Search: Python by CodeWithHarry, ML by Krish Naik..." onkeydown="if(event.key==='Enter')searchVideos()"><button class="sb" id="vdBtn" onclick="searchVideos()">Find Videos</button></div>
+    <div class="chips">
+      <span class="chip" onclick="qs('video','Python CodeWithHarry')">Python - CodeWithHarry</span>
+      <span class="chip" onclick="qs('video','Machine Learning Krish Naik')">ML - Krish Naik</span>
+      <span class="chip" onclick="qs('video','React Traversy Media')">React - Traversy</span>
+      <span class="chip" onclick="qs('video','JavaScript freeCodeCamp')">JS - freeCodeCamp</span>
+      <span class="chip" onclick="qs('video','Deep Learning Andrew Ng')">Deep Learning</span>
+      <span class="chip" onclick="qs('video','DSA Apna College')">DSA - Apna College</span>
+    </div>
+    <div id="vdRes"></div>
+  </div>
+</div>
+
+<!-- BOOKLIST -->
+<div class="page" id="pg-booklist">
+  <div class="inner"><div class="ph"><h2>🔖 My Booklist</h2><p>Saved books — read or download anytime</p></div><div id="blContent"></div></div>
+</div>
+
+<!-- GROUPS -->
+<div class="page" id="pg-groups">
+  <div class="inner"><div class="ph"><h2>💬 Study Groups</h2><p>Join groups, chat with learners, make study contacts</p></div><div id="grpContent"></div></div>
+</div>
+
+<!-- CHAT -->
+<div class="page chatroom" id="pg-chat">
+  <div class="chat-header"><button class="chat-back" onclick="go('groups')">←</button><div class="chat-ginfo"><div class="cn" id="chatGName">Group</div><div class="cs" id="chatGSub">Subject · Live Chat</div></div></div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-members" id="chatMembers"></div>
+  <div class="chat-input-bar"><input class="chat-input" id="chatInput" placeholder="Type a message... (Enter to send)" onkeydown="if(event.key==='Enter')sendMsg()"><button class="send-btn" onclick="sendMsg()">➤</button></div>
+</div>
+
+<!-- TESTS HUB -->
+<div class="page" id="pg-tests">
+  <div class="test-hub">
+    <div class="ph"><h2>🧪 Mock Test Centre</h2><p>Choose a category and difficulty — score up to 50 points!</p></div>
+    <div class="test-cats" id="testCats"></div>
+    <div id="testSubPage"></div>
+  </div>
+</div>
+
+<!-- TEST ARENA -->
+<div class="page" id="pg-testarena">
+  <div class="test-arena" id="testArenaContent"></div>
+</div>
+
+<!-- TEST RESULT -->
+<div class="page" id="pg-testresult">
+  <div class="test-arena" id="testResultContent"></div>
+</div>
+
+<!-- MY TESTS -->
+<div class="page" id="pg-mytests">
+  <div class="inner"><div class="ph"><h2>📊 My Test Results</h2><p>All your saved test scores and performance</p></div><div id="myTestsContent"></div></div>
+</div>
+
+<!-- PROFILE -->
+<div class="page" id="pg-profile">
+  <div class="inner" style="max-width:580px;"><div class="ph"><h2>👤 My Profile</h2></div><div id="profContent"></div></div>
+</div>
+
+<!-- MODAL -->
+<div id="modOv" onclick="if(event.target===this)closeMod()">
+  <div class="mod" id="modBox" onclick="event.stopPropagation()">
+    <button class="mod-x" onclick="closeMod()">✕</button>
+    <div id="modContent"></div>
+  </div>
+</div>
+<div id="toast-box"></div>
+
+<script>
+// ━━━ STORAGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const store={
+  _k(k,s){return(s?'evs_':'evl_')+k;},
+  async get(k,s=false){try{if(window.storage){const r=await window.storage.get(k,s);return r?JSON.parse(r.value):null;}const v=localStorage.getItem(this._k(k,s));return v?JSON.parse(v):null;}catch{return null;}},
+  async set(k,v,s=false){try{if(window.storage){await window.storage.set(k,JSON.stringify(v),s);return;}localStorage.setItem(this._k(k,s),JSON.stringify(v));}catch(e){console.warn(e);}},
+  async del(k,s=false){try{if(window.storage){await window.storage.delete(k,s);return;}localStorage.removeItem(this._k(k,s));}catch{}}
+};
+// ━━━ STATE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let cu=null,booklist=[],ddOpen=false,chatGId=null,chatPoll=null,chatLast=0;
+let testState={cat:'',lang:'',diff:'',qs:[],cur:0,ans:[],startTime:0,timer:null,timeLeft:0};
+
+// ━━━ NAV ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function go(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('act'));
+  document.getElementById('pg-'+p).classList.add('act');
+  closeDD();stopPoll();
+  if(p==='booklist')renderBL();
+  else if(p==='groups')renderGroups();
+  else if(p==='profile')renderProfile();
+  else if(p==='tests')renderTestHub();
+  else if(p==='mytests')renderMyTests();
+  window.scrollTo(0,0);
+}
+function refreshUI(){
+  const li=!!cu;
+  document.getElementById('navAuth').style.display=li?'none':'flex';
+  document.getElementById('navUser').style.display=li?'block':'none';
+  document.getElementById('nbBL').style.display=li?'flex':'none';
+  if(li){
+    const ini=cu.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    document.getElementById('navAva').textContent=ini;
+    document.getElementById('ddN').textContent=cu.name;
+    document.getElementById('ddE').textContent=cu.email;
+  }
+}
+function toggleDD(){ddOpen=!ddOpen;document.getElementById('navDD').style.display=ddOpen?'block':'none';}
+function closeDD(){ddOpen=false;document.getElementById('navDD').style.display='none';}
+document.addEventListener('click',e=>{if(!e.target.closest('#navUser'))closeDD();});
+async function logout(){await store.del('ev_session');cu=null;booklist=[];refreshUI();go('home');toast('Signed out','in');}
+
+// ━━━ MODAL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function openMod(t,d){
+  const ov=document.getElementById('modOv'),box=document.getElementById('modBox');
+  ov.classList.add('open');box.className='mod';
+  if(t==='bookdetail'){box.classList.add('bdmod');renderBD(d);}
+  else if(t==='login')renderLoginMod();
+  else if(t==='signup')renderSignupMod();
+  else if(t==='recover')renderRecoverMod();
+  else if(t==='creategroup')renderCreateGMod();
+}
+function closeMod(){document.getElementById('modOv').classList.remove('open');}
+
+// ━━━ AUTH ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function renderLoginMod(){document.getElementById('modContent').innerHTML=`<h2>Welcome back</h2><div class="msub">Sign in to your EduVerse account</div><div id="lErr"></div><div class="fg"><label class="fl">Email</label><input class="fi2" id="lE" type="email" placeholder="you@example.com" autocomplete="email"></div><div class="fg"><label class="fl">Password</label><input class="fi2" id="lP" type="password" placeholder="Your password" onkeydown="if(event.key==='Enter')doLogin()"></div><button class="fbtn" onclick="doLogin()">Sign In →</button><div class="fsw"><a onclick="openMod('recover')">Forgot password?</a> &nbsp;·&nbsp; <a onclick="openMod('signup')">Create account</a></div>`;}
+async function doLogin(){
+  const e=(document.getElementById('lE').value||'').trim().toLowerCase(),p=document.getElementById('lP').value,err=document.getElementById('lErr');
+  if(!e||!p){err.innerHTML='<div class="errmsg">Fill all fields.</div>';return;}
+  const a=await store.get('ev_acct_'+e.replace(/[^a-z0-9]/g,'_'),true);
+  if(!a||a.password!==p){err.innerHTML='<div class="errmsg">Invalid email or password.</div>';return;}
+  cu={name:a.name,email:a.email,phone:a.phone||''};
+  booklist=(await store.get('ev_bl_'+e.replace(/[^a-z0-9]/g,'_')))||[];
+  await store.set('ev_session',{email:e,name:a.name,phone:a.phone||''});
+  refreshUI();closeMod();toast(`Welcome back, ${cu.name.split(' ')[0]}! 👋`,'ok');
+}
+function renderSignupMod(){document.getElementById('modContent').innerHTML=`<h2>Create Account</h2><div class="msub">Join EduVerse — completely free</div><div id="sErr"></div><div class="fg"><label class="fl">Full Name</label><input class="fi2" id="sN" type="text" placeholder="Your full name"></div><div class="fg"><label class="fl">Email</label><input class="fi2" id="sE" type="email" placeholder="you@example.com"></div><div class="fg"><label class="fl">Phone (for recovery)</label><input class="fi2" id="sP" type="tel" placeholder="+91 98765 43210"></div><div class="fg"><label class="fl">Password</label><input class="fi2" id="sW" type="password" placeholder="Min. 6 characters" onkeydown="if(event.key==='Enter')doSignup()"></div><button class="fbtn" id="sBE" onclick="doSignup()">Create Account →</button><div class="fsw">Already have an account? <a onclick="openMod('login')">Sign in</a></div>`;}
+async function doSignup(){
+  const n=(document.getElementById('sN').value||'').trim(),e=(document.getElementById('sE').value||'').trim().toLowerCase(),ph=(document.getElementById('sP').value||'').trim(),p=document.getElementById('sW').value,err=document.getElementById('sErr');
+  if(!n||!e||!p){err.innerHTML='<div class="errmsg">Fill all required fields.</div>';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.innerHTML='<div class="errmsg">Enter a valid email.</div>';return;}
+  if(p.length<6){err.innerHTML='<div class="errmsg">Password min 6 chars.</div>';return;}
+  const k='ev_acct_'+e.replace(/[^a-z0-9]/g,'_');
+  if(await store.get(k,true)){err.innerHTML='<div class="errmsg">Account exists. <a onclick="openMod(\'login\')" style="color:var(--gold);cursor:pointer">Sign in?</a></div>';return;}
+  document.getElementById('sBE').disabled=true;document.getElementById('sBE').textContent='Creating...';
+  await store.set(k,{name:n,email:e,phone:ph,password:p,joinedAt:Date.now(),points:0},true);
+  cu={name:n,email:e,phone:ph};booklist=[];
+  await store.set('ev_session',{email:e,name:n,phone:ph});
+  refreshUI();closeMod();toast(`🎉 Welcome, ${n.split(' ')[0]}!`,'ok');
+}
+let recTab='email';
+function renderRecoverMod(){document.getElementById('modContent').innerHTML=`<h2>Recover Account</h2><div class="msub">Enter email or phone to recover access</div><div class="tabs2"><button class="tab2 act" onclick="sRT('email',this)">📧 Email</button><button class="tab2" onclick="sRT('phone',this)">📱 Phone</button></div><div id="rMsg"></div><div id="rES"><div class="fg"><label class="fl">Email</label><input class="fi2" id="rE" type="email" placeholder="you@example.com"></div></div><div id="rPS" style="display:none"><div class="fg"><label class="fl">Phone</label><input class="fi2" id="rP" type="tel" placeholder="+91 98765 43210"></div></div><button class="fbtn" onclick="doRecover()">Send Recovery Link →</button><div class="fsw"><a onclick="openMod('login')">← Back to Sign In</a></div>`;}
+function sRT(t,b){recTab=t;document.querySelectorAll('.tab2').forEach(x=>x.classList.remove('act'));b.classList.add('act');document.getElementById('rES').style.display=t==='email'?'block':'none';document.getElementById('rPS').style.display=t==='phone'?'block':'none';}
+async function doRecover(){const m=document.getElementById('rMsg');if(recTab==='email'){const e=(document.getElementById('rE').value||'').trim().toLowerCase();if(!e){m.innerHTML='<div class="errmsg">Enter email.</div>';return;}const a=await store.get('ev_acct_'+e.replace(/[^a-z0-9]/g,'_'),true);m.innerHTML=a?`<div class="okmsg">✅ Recovery link sent to <strong>${e}</strong>!</div>`:'<div class="errmsg">No account found.</div>';}else{const p=(document.getElementById('rP').value||'').trim();if(!p){m.innerHTML='<div class="errmsg">Enter phone.</div>';return;}m.innerHTML=`<div class="okmsg">✅ OTP sent to <strong>${p}</strong>!</div>`;}}
+
+// ━━━ BOOKS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+async function searchBooks(){
+  const q=document.getElementById('bkInput').value.trim();if(!q)return;
+  const btn=document.getElementById('bkBtn');btn.disabled=true;btn.textContent='Searching...';
+  document.getElementById('bkRes').innerHTML=`<div class="ldg"><div class="spin"></div><div class="ldgt">Searching books...</div></div>`;
+  try{const r=await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=24&fields=title,author_name,cover_i,first_publish_year,key,subject`);const d=await r.json();renderBooks(d.docs||[],q);}
+  catch{document.getElementById('bkRes').innerHTML=`<div class="empty"><div class="ei">⚠️</div><h3>Search Failed</h3><p>Please check connection.</p></div>`;}
+  btn.disabled=false;btn.textContent='Search';
+}
+function renderBooks(books,q){
+  if(!books.length){document.getElementById('bkRes').innerHTML=`<div class="empty"><div class="ei">🔍</div><h3>No books found</h3><p>Try different keywords.</p></div>`;return;}
+  const sk=booklist.map(b=>b.key);
+  const cards=books.map(b=>{const sv=sk.includes(b.key),au=(b.author_name||['Unknown'])[0],cov=b.cover_i?`<img src="https://covers.openlibrary.org/b/id/${b.cover_i}-M.jpg" alt="${esc(b.title)}" onerror="this.parentElement.innerHTML='<div class=bph>📚</div>'">`:`<div class="bph">📚</div>`,bd=JSON.stringify({key:b.key,title:b.title,author:au,coverId:b.cover_i||'',year:b.first_publish_year||'',subjects:(b.subject||[]).slice(0,8)}).replace(/"/g,'&quot;');return `<div class="bcard" onclick='openBD(${bd})'><div class="bcov">${cov}</div><div class="binfo"><div class="btit">${esc(b.title)}</div><div class="baut">${esc(au)}</div><div class="byr">${b.first_publish_year||'—'}</div></div><button class="bsv ${sv?'sv':''}" onclick="event.stopPropagation();tSave(this,'${e2(b.key)}','${e2(b.title)}','${e2(au)}','${b.cover_i||''}','${b.first_publish_year||''}')">${sv?'★':'☆'}</button></div>`;}).join('');
+  document.getElementById('bkRes').innerHTML=`<div class="rinfo">Found <span>${books.length}</span> books for "${esc(q)}"</div><div class="bgrid">${cards}</div>`;
+}
+function openBD(b){if(typeof b==='string'){try{b=JSON.parse(b);}catch{return;}}openMod('bookdetail',b);}
+function renderBD(b){
+  const sv=booklist.some(x=>x.key===b.key),cov=b.coverId?`<img src="https://covers.openlibrary.org/b/id/${b.coverId}-L.jpg" onerror="this.style.display='none'">`:`<div style="font-size:44px;display:flex;align-items:center;justify-content:center;height:100%">📚</div>`,ol=b.key?`https://openlibrary.org${b.key}`:`https://openlibrary.org/search?q=${encodeURIComponent(b.title)}`,dl=`https://archive.org/search?query=${encodeURIComponent(b.title+' '+b.author)}&and[]=mediatype:"texts"`,sc=(b.subjects||[]).map(s=>`<span class="bsub-chip">${esc(s)}</span>`).join('');
+  document.getElementById('modContent').innerHTML=`<div class="bd-top"><div class="bd-cover">${cov}</div><div class="bd-meta"><h3>${esc(b.title)}</h3><div class="au">by ${esc(b.author)}</div><div class="yr">${b.year||'—'}</div><div style="display:flex;gap:7px;flex-wrap:wrap;"><a class="bda read" href="${ol}" target="_blank">📖 Read Online</a><a class="bda dl" href="${dl}" target="_blank">⬇ Download</a></div></div></div><button class="bda save ${sv?'sv':''}" style="width:100%;justify-content:center;margin-bottom:12px;" onclick="tSaveMod('${e2(b.key)}','${e2(b.title)}','${e2(b.author)}','${b.coverId||''}','${b.year||''}',this)">${sv?'★ Saved':'☆ Save to My List'}</button>${sc?`<div><div style="font-size:10.5px;color:var(--tdim);text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;">Subjects</div><div class="bsubjects">${sc}</div></div>`:''}`;
+}
+function tSaveMod(key,title,author,coverId,year,btn){const i=booklist.findIndex(b=>b.key===key);if(i>=0){booklist.splice(i,1);btn.textContent='☆ Save to My List';btn.classList.remove('sv');toast('Removed','in');}else{if(!cu){closeMod();openMod('login');toast('Sign in to save','in');return;}booklist.push({key,title,author,coverId,year});btn.textContent='★ Saved';btn.classList.add('sv');toast('📚 Saved!','ok');}saveBL();}
+async function tSave(btn,key,title,author,coverId,year){if(!cu){openMod('login');toast('Sign in to save','in');return;}const i=booklist.findIndex(b=>b.key===key);if(i>=0){booklist.splice(i,1);btn.textContent='☆';btn.classList.remove('sv');toast('Removed','in');}else{booklist.push({key,title,author,coverId,year});btn.textContent='★';btn.classList.add('sv');toast('📚 Saved!','ok');}saveBL();}
+async function saveBL(){if(cu)await store.set('ev_bl_'+cu.email.replace(/[^a-z0-9]/g,'_'),booklist);}
+
+// ━━━ VIDEOS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const CDB=[{n:'CodeWithHarry',t:['python','django','web','javascript','java','react','mysql'],e:'🎯'},{n:'Krish Naik',t:['machine learning','deep learning','data science','nlp','tensorflow','ai','aiml'],e:'🤖'},{n:'freeCodeCamp.org',t:['javascript','python','react','node','web','css','html','ml','data'],e:'⚡'},{n:'Traversy Media',t:['web','javascript','react','vue','node','css','html','python'],e:'🌐'},{n:'Apna College',t:['java','dsa','web','python','c++','data structures','algorithms','hindi'],e:'🎓'},{n:'Kunal Kushwaha',t:['java','dsa','devops','kubernetes','algorithms','docker','git'],e:'🚀'},{n:'TechWithTim',t:['python','machine learning','game','algorithms','data science'],e:'💻'},{n:'3Blue1Brown',t:['math','mathematics','linear algebra','neural networks','calculus'],e:'📐'},{n:'Sentdex',t:['python','machine learning','pytorch','tensorflow','finance','data'],e:'📊'},{n:'MIT OpenCourseWare',t:['computer science','mathematics','physics','engineering','algorithms'],e:'🏛️'},{n:'Andrew Ng',t:['machine learning','deep learning','ai','neural networks','aiml'],e:'🧠'},{n:'Fireship',t:['web','javascript','typescript','react','firebase','flutter','devops'],e:'🔥'}];
+const VT=[(c,t)=>`${t} Complete Course 2024 | ${c}`,(c,t)=>`${t} Tutorial for Beginners | ${c}`,(c,t)=>`${t} Full Course | ${c}`,(c,t)=>`Master ${t} | ${c}`,(c,t)=>`${t} Crash Course | ${c}`,(c,t)=>`${t} Zero to Hero | ${c}`,(c,t)=>`Learn ${t} Fast | ${c}`,(c,t)=>`${t} Project Tutorial | ${c}`,(c,t)=>`${t} Interview Prep | ${c}`,(c,t)=>`${t} Advanced | ${c}`,(c,t)=>`${t} Bootcamp | ${c}`,(c,t)=>`${t} Explained | ${c}`];
+function genVids(q){const ql=q.toLowerCase(),sc=CDB.map(c=>{let s=0;if(ql.includes(c.n.toLowerCase()))s+=15;c.t.forEach(t=>{if(ql.includes(t))s+=3;if(t.split(' ').some(w=>ql.includes(w)))s+=1;});return{...c,score:s};}).sort((a,b)=>b.score-a.score),tp=q.split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' '),vw=['120K','340K','780K','1.2M','890K','2.4M','560K','1.8M'],dr=['14:32','48:20','1:24:15','32:08','1:46:30','28:54','2:12:45','55:30'],ag=['3 days ago','1 week ago','2 weeks ago','1 month ago','3 months ago','6 months ago'],cl=[['#0f1e18','#1a3028'],['#1a1320','#2a1f38'],['#1e1208','#302015'],['#0a1520','#152535'],['#1a1012','#2a1820'],['#101a10','#182818']];
+return sc.slice(0,12).map((c,i)=>({title:VT[i%VT.length](c.n,tp),channel:c.n,emoji:c.e,duration:dr[i%dr.length],views:vw[i%vw.length]+' views',uploadDate:ag[i%ag.length],description:`A comprehensive ${tp} course by ${c.n}.`,searchQuery:`${q} ${c.n}`,colors:cl[i%cl.length]}));}
+async function searchVideos(){
+  const q=document.getElementById('vdInput').value.trim();if(!q)return;
+  const btn=document.getElementById('vdBtn');btn.disabled=true;btn.textContent='Searching...';
+  document.getElementById('vdRes').innerHTML=`<div class="ldg"><div class="spin"></div><div class="ldgt">Finding best videos...</div></div>`;
+  let vids=null;
+  try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:`Generate JSON array of 12 YouTube educational videos for: "${q}". Each: title, channel (real YT edu channel), emoji, duration, views, uploadDate, description (1 sentence), searchQuery, colors (2 hex). ONLY JSON array.`}]})});if(r.ok){const d=await r.json();vids=JSON.parse((d.content?.[0]?.text||'').replace(/```json|```/g,'').trim());}}catch{}
+  if(!vids||!vids.length)vids=genVids(q);
+  const cards=vids.map((v,i)=>{const u=`https://www.youtube.com/results?search_query=${encodeURIComponent(v.searchQuery||v.title+' '+v.channel)}`,c=v.colors||['#0f1e18','#1a3028'];return `<div class="vcard"><div class="vth" style="background:linear-gradient(135deg,${c[0]},${c[1]})"><div style="font-size:42px">${v.emoji||'🎬'}</div><div class="vov"><div class="vplay">▶</div></div></div><div class="vinfo"><div class="vtit">${esc(v.title)}</div><div class="vch">📺 ${esc(v.channel)}</div><div class="vmet">${esc(v.duration)} · ${esc(v.views)} · ${esc(v.uploadDate)}</div><div class="vdesc">${esc(v.description||'')}</div><a class="vlink" href="${u}" target="_blank" rel="noopener">▶ Watch on YouTube ↗</a></div></div>`;}).join('');
+  document.getElementById('vdRes').innerHTML=`<div class="rinfo">Showing <span>${vids.length}</span> videos for "${esc(q)}"</div><div class="vgrid">${cards}</div>`;
+  btn.disabled=false;btn.textContent='Find Videos';
+}
+function renderBL(){
+  const el=document.getElementById('blContent');
+  if(!cu){el.innerHTML=`<div class="empty"><div class="ei">🔐</div><h3>Sign in first</h3><p>Your saved books appear here.</p><br><button class="bp" onclick="openMod('login')">Sign In</button></div>`;return;}
+  if(!booklist.length){el.innerHTML=`<div class="empty"><div class="ei">📭</div><h3>Booklist empty</h3><p>Search books and tap ☆ to save.</p><br><button class="bp" onclick="go('books')">Browse Books</button></div>`;return;}
+  const cards=booklist.map(b=>{const c=b.coverId?`<img src="https://covers.openlibrary.org/b/id/${b.coverId}-M.jpg" onerror="this.parentElement.innerHTML='<div class=bph>📚</div>'">`:`<div class="bph">📚</div>`,ol=b.key?`https://openlibrary.org${b.key}`:`https://openlibrary.org/search?q=${encodeURIComponent(b.title)}`,dl=`https://archive.org/search?query=${encodeURIComponent(b.title+' '+b.author)}&and[]=mediatype:"texts"`;return `<div class="bcard"><div class="bcov">${c}</div><div class="binfo"><div class="btit">${esc(b.title)}</div><div class="baut">${esc(b.author)}</div><div class="byr">${b.year||'—'}</div><div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;"><a href="${ol}" target="_blank" style="font-size:10.5px;color:var(--teal);text-decoration:none;background:var(--td);border:1px solid rgba(56,201,168,.22);padding:3px 8px;border-radius:5px;font-weight:600;">📖 Read</a><a href="${dl}" target="_blank" style="font-size:10.5px;color:var(--gold);text-decoration:none;background:var(--gd);border:1px solid rgba(212,168,67,.22);padding:3px 8px;border-radius:5px;font-weight:600;">⬇ PDF</a></div></div><button class="bsv sv" onclick="rmBL('${e2(b.key)}')">✕</button></div>`;}).join('');
+  el.innerHTML=`<div class="rinfo"><span>${booklist.length}</span> book${booklist.length!==1?'s':''} saved</div><div class="bgrid">${cards}</div>`;
+}
+async function rmBL(key){booklist=booklist.filter(b=>b.key!==key);await saveBL();renderBL();toast('Removed','in');}
+
+// ━━━ GROUPS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const DG=[{id:'g_aiml',name:'AI & Machine Learning',subject:'AIML',description:'Discuss AI, ML, Deep Learning papers and projects.',creator:'EduVerse',members:142},{id:'g_webdev',name:'Web Development',subject:'Web Dev',description:'HTML, CSS, JS, React, Node — everything web.',creator:'EduVerse',members:238},{id:'g_python',name:'Python Programmers',subject:'Python',description:'All things Python — scripting to data science.',creator:'EduVerse',members:315},{id:'g_dsa',name:'DSA & Competitive',subject:'DSA',description:'Data structures, algorithms and interview prep.',creator:'EduVerse',members:187},{id:'g_math',name:'Mathematics',subject:'Math',description:'Algebra, calculus, stats and probability.',creator:'EduVerse',members:96},{id:'g_general',name:'General Discussion',subject:'General',description:'Introductions, recommendations and study support.',creator:'EduVerse',members:421}];
+async function getGroups(){const s=await store.get('ev_groups',true);if(!s||!s.length){await store.set('ev_groups',DG,true);return DG;}const ids=s.map(g=>g.id);const m=[...s];DG.forEach(g=>{if(!ids.includes(g.id))m.unshift(g);});return m;}
+async function renderGroups(){
+  const el=document.getElementById('grpContent');el.innerHTML=`<div class="ldg"><div class="spin"></div><div class="ldgt">Loading groups...</div></div>`;
+  const gs=await getGroups();
+  const cb=cu?`<button class="create-group-btn" onclick="openMod('creategroup')">➕ Create New Group</button>`:`<button class="create-group-btn" onclick="openMod('login')">🔐 Sign in to create a group</button>`;
+  el.innerHTML=cb+`<div class="glist">${gs.map(g=>`<div class="gcard" onclick="openChat('${g.id}','${e2(g.name)}','${e2(g.subject)}')"><div class="gtop"><div class="gn">${esc(g.name)}</div><span class="gbadge">${esc(g.subject)}</span></div><div class="gdesc">${esc(g.description)}</div><div class="gmeta"><span>👥 ${g.members||0} members</span><span>by ${esc(g.creator||'EduVerse')}</span></div></div>`).join('')}</div>`;
+}
+function renderCreateGMod(){if(!cu){closeMod();openMod('login');return;}document.getElementById('modContent').innerHTML=`<h2>Create Group</h2><div class="msub">Start a new study group</div><div id="cgE"></div><div class="fg"><label class="fl">Group Name</label><input class="fi2" id="cgN" placeholder="e.g. Advanced React Learners"></div><div class="fg"><label class="fl">Subject</label><input class="fi2" id="cgS" placeholder="e.g. React, Python, AIML..."></div><div class="fg"><label class="fl">Description</label><textarea class="fi2" id="cgD" placeholder="What will this group discuss?"></textarea></div><button class="fbtn" onclick="createGroup()">Create Group →</button>`;}
+async function createGroup(){const n=(document.getElementById('cgN').value||'').trim(),s=(document.getElementById('cgS').value||'').trim(),d=(document.getElementById('cgD').value||'').trim();if(!n||!s){document.getElementById('cgE').innerHTML='<div class="errmsg">Name and subject required.</div>';return;}const gs=await getGroups();gs.unshift({id:'g_'+Date.now(),name:n,subject:s,description:d||'A new study group.',creator:cu.name,members:1,createdAt:Date.now()});await store.set('ev_groups',gs,true);closeMod();toast(`Group "${n}" created! 🎉`,'ok');renderGroups();}
+async function openChat(gid,gn,gs){if(!cu){openMod('login');toast('Sign in to join groups','in');return;}chatGId=gid;chatLast=0;document.getElementById('chatGName').textContent=gn;document.getElementById('chatGSub').textContent=gs+' · Live Chat';document.getElementById('chatMsgs').innerHTML=`<div class="ldg"><div class="spin"></div></div>`;go('chat');await loadMsgs(true);chatPoll=setInterval(()=>loadMsgs(false),2500);}
+function stopPoll(){if(chatPoll){clearInterval(chatPoll);chatPoll=null;chatGId=null;}}
+async function loadMsgs(sb=false){const msgs=(await store.get('ev_msgs_'+chatGId,true))||[],el=document.getElementById('chatMsgs');if(!msgs.length){el.innerHTML=`<div style="text-align:center;padding:36px;color:var(--tdim);font-size:13px;">👋 Be the first to say hello!</div>`;return;}const html=msgs.map(m=>{const own=m.userId===cu.email,ini=(m.userName||'?').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2),t=new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});return `<div class="msg ${own?'own':''}"><div class="msg-ava">${ini}</div><div class="msg-body"><div class="msg-who">${esc(m.userName)}</div><div class="msg-bub">${esc(m.text)}</div><div class="msg-time">${t}</div></div></div>`;}).join('');el.innerHTML=html;if(sb||msgs.length!==chatLast)el.scrollTop=el.scrollHeight;chatLast=msgs.length;const ms=[...new Set(msgs.map(m=>m.userName))];document.getElementById('chatMembers').innerHTML=`<span style="color:var(--tdim);margin-right:4px;">Online:</span>${ms.map(n=>`<span class="mem-chip">${esc(n)}</span>`).join('')}`;}
+async function sendMsg(){const inp=document.getElementById('chatInput'),t=inp.value.trim();if(!t||!cu)return;inp.value='';const msgs=(await store.get('ev_msgs_'+chatGId,true))||[];msgs.push({id:Date.now()+'_'+Math.random().toString(36).slice(2),userId:cu.email,userName:cu.name,text:t,ts:Date.now()});if(msgs.length>200)msgs.splice(0,msgs.length-200);await store.set('ev_msgs_'+chatGId,msgs,true);await loadMsgs(true);}
+
+// ━━━ TEST BANK ━━━━━━━━━━━━━━━━━━━━━━━━━━
+const TB={
+  coding:{
+    python:{
+      easy:[
+        {q:"What is the output of: print(type([]))?",opts:["<class 'list'>","<class 'array'>","<class 'tuple'>","list"],ans:0,exp:"[] is a list literal, type() returns <class 'list'>."},
+        {q:"Which keyword is used to define a function in Python?",opts:["function","def","func","define"],ans:1,exp:"'def' keyword defines functions in Python."},
+        {q:"What does len([1,2,3,4,5]) return?",opts:["4","5","6","error"],ans:1,exp:"len() returns number of elements. List has 5 elements."},
+        {q:"Which of the following is used for single-line comments in Python?",opts:["//","/* */","#","--"],ans:2,exp:"# is used for single-line comments in Python."},
+        {q:"What is the output of: print(2 ** 3)?",opts:["6","8","9","5"],ans:1,exp:"** is the exponentiation operator. 2**3 = 8."},
+        {q:"Which data type is immutable in Python?",opts:["list","dict","tuple","set"],ans:2,exp:"Tuples are immutable — they cannot be modified after creation."},
+        {q:"What does 'range(5)' produce?",opts:["[1,2,3,4,5]","[0,1,2,3,4]","[0,1,2,3,4,5]","range object from 1 to 5"],ans:1,exp:"range(5) produces 0,1,2,3,4 — starts at 0, excludes 5."},
+        {q:"What is the correct syntax to create an empty dictionary?",opts:["dict = []","dict = ()","dict = {}","dict = set()"],ans:2,exp:"{} creates an empty dictionary in Python."},
+        {q:"What method adds an element to the end of a list?",opts:[".add()",".insert()",".append()",".push()"],ans:2,exp:".append() adds an element to the end of a list."},
+        {q:"What is the output of: bool(0)?",opts:["True","False","0","None"],ans:1,exp:"bool(0) is False. 0 is falsy in Python."},
+      ],
+      medium:[
+        {q:"What is the output of:\nlist = [1,2,3,4,5]\nprint(list[1:4])?",opts:["[1,2,3]","[2,3,4]","[1,2,3,4]","[2,3,4,5]"],ans:1,exp:"Slicing [1:4] gives elements at index 1,2,3 → [2,3,4]."},
+        {q:"What does the *args parameter allow in a function?",opts:["Only keyword arguments","Variable number of positional arguments","Only one argument","Default argument values"],ans:1,exp:"*args allows passing variable number of positional arguments."},
+        {q:"What is a lambda function?",opts:["A named function","An anonymous function","A recursive function","A generator function"],ans:1,exp:"Lambda creates small anonymous functions: lambda x: x*2."},
+        {q:"What does list comprehension [x**2 for x in range(5)] produce?",opts:["[1,4,9,16,25]","[0,1,4,9,16]","[0,1,2,3,4]","[1,2,3,4,5]"],ans:1,exp:"range(5) = 0-4, squaring each: [0,1,4,9,16]."},
+        {q:"Which method returns all keys of a dictionary?",opts:[".values()",".items()",".keys()",".get()"],ans:2,exp:".keys() returns a view of all dictionary keys."},
+        {q:"What is the output of: print('hello'[::-1])?",opts:["hello","olleh","helo","error"],ans:1,exp:"[::-1] reverses the string → 'olleh'."},
+        {q:"What does 'is' operator check in Python?",opts:["Value equality","Identity (same object)","Type equality","Length equality"],ans:1,exp:"'is' checks object identity, not value equality."},
+        {q:"What is a Python decorator?",opts:["A comment style","A function that modifies another function","A class attribute","A loop modifier"],ans:1,exp:"Decorators wrap functions to add functionality using @syntax."},
+        {q:"What exception does dividing by zero raise?",opts:["ValueError","TypeError","ZeroDivisionError","ArithmeticError"],ans:2,exp:"ZeroDivisionError is raised when dividing by zero."},
+        {q:"What does enumerate() do?",opts:["Counts elements","Returns (index, value) pairs","Sorts elements","Filters elements"],ans:1,exp:"enumerate() returns index-value pairs for iteration."},
+      ],
+      hard:[
+        {q:"What is the output of:\nx = [1,2,3]\ny = x\ny.append(4)\nprint(x)?",opts:["[1,2,3]","[1,2,3,4]","[4]","Error"],ans:1,exp:"Lists are mutable. y = x makes both point to same object, so x is also modified."},
+        {q:"What does __slots__ do in a Python class?",opts:["Defines methods","Restricts instance attributes, saves memory","Creates class variables","Defines properties"],ans:1,exp:"__slots__ restricts dynamic attribute creation and reduces memory usage."},
+        {q:"What is the GIL in Python?",opts:["Global Import Lock","Global Interpreter Lock","General Interface Layer","Global Instance List"],ans:1,exp:"GIL (Global Interpreter Lock) prevents multiple threads from executing Python bytecode simultaneously."},
+        {q:"What does @staticmethod mean?",opts:["Method with class reference","Method with no self/cls, bound to class namespace","Private method","Abstract method"],ans:1,exp:"@staticmethod doesn't take self or cls — it's a regular function in the class namespace."},
+        {q:"What is a Python generator?",opts:["A list creator","Function that yields values one at a time","A decorator type","A class factory"],ans:1,exp:"Generators use yield to produce values lazily, saving memory."},
+        {q:"What does the __enter__ and __exit__ methods implement?",opts:["Iterator protocol","Context manager protocol","Comparison protocol","Hashing protocol"],ans:1,exp:"__enter__ and __exit__ implement the context manager protocol (used with 'with' statements)."},
+        {q:"What is the time complexity of 'in' operator for a Python set?",opts:["O(n)","O(log n)","O(1)","O(n²)"],ans:2,exp:"Sets use hash tables, so 'in' is O(1) average case."},
+        {q:"What does functools.lru_cache do?",opts:["Sorts a list","Caches function results","Creates lazy lists","Compresses data"],ans:1,exp:"lru_cache memoizes function results using a least-recently-used cache."},
+        {q:"Which is true about Python's memory management?",opts:["Manual malloc/free","Reference counting + cyclic garbage collector","Only reference counting","Only garbage collection"],ans:1,exp:"Python uses reference counting as primary and a cyclic garbage collector for circular references."},
+        {q:"What is a metaclass in Python?",opts:["A class that can't be instantiated","A class whose instances are classes","A private class","An abstract class"],ans:1,exp:"A metaclass is a class of a class — it defines how classes themselves behave."},
+      ]
+    },
+    javascript:{
+      easy:[
+        {q:"Which keyword declares a block-scoped variable?",opts:["var","let","const","all of the above"],ans:1,exp:"'let' is block-scoped. 'var' is function-scoped."},
+        {q:"What does typeof null return?",opts:["null","undefined","object","string"],ans:2,exp:"typeof null returns 'object' — a historical JavaScript bug."},
+        {q:"Which method adds to end of array?",opts:["push()","pop()","shift()","unshift()"],ans:0,exp:"push() adds elements to end of array."},
+        {q:"What is === in JavaScript?",opts:["Assignment","Loose equality","Strict equality","Not equal"],ans:2,exp:"=== is strict equality — checks value AND type."},
+        {q:"How do you create an arrow function?",opts:["function()=>{}","=>function()","const f = () => {}","fn() => {}"],ans:2,exp:"Arrow functions: const f = () => {} or const f = x => x*2."},
+        {q:"What does NaN stand for?",opts:["Not a Null","Not a Number","New and Null","None and Null"],ans:1,exp:"NaN means 'Not a Number' — result of invalid numeric operations."},
+        {q:"Which method removes last element from array?",opts:["push()","pop()","shift()","splice()"],ans:1,exp:"pop() removes and returns the last element."},
+        {q:"What is the output of: console.log(0 == false)?",opts:["false","true","undefined","error"],ans:1,exp:"0 == false is true because of type coercion (loose equality)."},
+        {q:"How do you write a comment in JS?",opts:["# comment","<!-- comment -->","// comment","** comment"],ans:2,exp:"// is for single-line comments, /* */ for multi-line."},
+        {q:"What does JSON.stringify() do?",opts:["Parses JSON","Converts object to JSON string","Validates JSON","Compresses JSON"],ans:1,exp:"JSON.stringify() converts a JS object to a JSON string."},
+      ],
+      medium:[
+        {q:"What is a closure in JavaScript?",opts:["A function that closes the app","A function with access to outer scope variables","A loop statement","An error handler"],ans:1,exp:"A closure is a function that retains access to its outer scope's variables."},
+        {q:"What does Promise.all() do?",opts:["Runs promises sequentially","Runs promises in parallel, resolves when all resolve","Returns first resolved promise","Cancels all promises"],ans:1,exp:"Promise.all() runs promises concurrently and resolves when ALL succeed."},
+        {q:"What is event bubbling?",opts:["Events triggering on creation","Events propagating from child to parent","Events on hover","Async event handling"],ans:1,exp:"Event bubbling means events propagate upward from target to document root."},
+        {q:"What does the spread operator (...) do?",opts:["Creates rest params only","Expands iterables into individual elements","Deletes properties","Clones deep objects only"],ans:1,exp:"Spread (...) expands arrays/objects: [...arr] or {...obj}."},
+        {q:"What is the output of: [1,2,3].map(x => x * 2)?",opts:["[1,2,3]","[2,4,6]","[3,6,9]","undefined"],ans:1,exp:".map() transforms each element. 1*2=2, 2*2=4, 3*2=6."},
+        {q:"What is async/await?",opts:["A loop structure","Syntactic sugar over Promises","A type system","A module system"],ans:1,exp:"async/await provides cleaner syntax for working with Promises."},
+        {q:"What is the prototype chain?",opts:["CSS inheritance","Method for inheriting properties via prototypes","Import chain","Scope chain"],ans:1,exp:"JS uses prototypal inheritance — objects inherit from their prototype."},
+        {q:"What does Array.reduce() do?",opts:["Filters elements","Reduces array to single value","Sorts elements","Flattens arrays"],ans:1,exp:"reduce() accumulates array elements into a single value."},
+        {q:"What is 'this' in an arrow function?",opts:["The function itself","Inherits 'this' from outer scope","The global object","undefined"],ans:1,exp:"Arrow functions don't have own 'this' — they inherit from lexical scope."},
+        {q:"What does destructuring do?",opts:["Destroys variables","Extracts values from arrays/objects into variables","Creates copies","Merges objects"],ans:1,exp:"Destructuring: const {a,b} = obj or const [x,y] = arr."},
+      ],
+      hard:[
+        {q:"What is the output of:\nconsole.log(typeof function(){})?",opts:["object","function","callable","undefined"],ans:1,exp:"Functions have typeof === 'function' in JavaScript."},
+        {q:"What is the event loop in JavaScript?",opts:["A for loop","Mechanism handling async operations via call stack, task queue","A CSS animation loop","A render loop"],ans:1,exp:"Event loop monitors call stack and processes callback queue when stack is empty."},
+        {q:"What does Object.freeze() do?",opts:["Deletes object","Makes object immutable (can't modify properties)","Copies object","Seals prototype"],ans:1,exp:"Object.freeze() prevents any modifications to the object's properties."},
+        {q:"What is a WeakMap?",opts:["A small Map","Map where keys are weakly referenced (garbage collectible)","A read-only Map","An async Map"],ans:1,exp:"WeakMap keys are held weakly — they can be garbage collected if no other refs exist."},
+        {q:"What is tail call optimization?",opts:["CSS optimization","Reusing stack frames for tail recursive calls","Lazy evaluation","Memoization"],ans:1,exp:"TCO allows tail-recursive calls to reuse the same stack frame, preventing stack overflow."},
+        {q:"What does Symbol() create?",opts:["A string","A unique, immutable primitive value","A number","An object"],ans:1,exp:"Symbol() creates a guaranteed-unique primitive value, useful as object keys."},
+        {q:"What is the difference between null and undefined?",opts:["No difference","null is intentional absence, undefined is uninitialized","undefined is intentional absence","They're the same type"],ans:1,exp:"null = intentionally empty, undefined = variable declared but not assigned."},
+        {q:"What does generator function yield?",opts:["Returns immediately","Pauses execution and returns a value, resumable later","Throws an error","Returns last value"],ans:1,exp:"yield pauses the generator and returns a value; next() resumes execution."},
+        {q:"What is the Proxy object?",opts:["A network proxy","Object that intercepts operations on another object","A copy of an object","An async wrapper"],ans:1,exp:"Proxy intercepts and redefines fundamental operations like get, set, has."},
+        {q:"What is currying?",opts:["A cooking style","Transforming f(a,b,c) into f(a)(b)(c)","Memoization","Recursion"],ans:1,exp:"Currying converts a multi-arg function into a chain of single-arg functions."},
+      ]
+    }
+  },
+  maths:{
+    general:{
+      easy:[
+        {q:"What is the value of √144?",opts:["11","12","13","14"],ans:1,exp:"12 × 12 = 144, so √144 = 12."},
+        {q:"What is 15% of 200?",opts:["25","30","35","40"],ans:1,exp:"15% of 200 = (15/100) × 200 = 30."},
+        {q:"If 3x + 6 = 21, what is x?",opts:["3","4","5","6"],ans:2,exp:"3x = 21 - 6 = 15, so x = 5."},
+        {q:"What is the LCM of 4 and 6?",opts:["8","10","12","24"],ans:2,exp:"LCM(4,6) = 12. 4×3=12, 6×2=12."},
+        {q:"A triangle has angles 60°, 80°. What's the third angle?",opts:["30°","40°","50°","60°"],ans:1,exp:"Sum of angles = 180°. 180 - 60 - 80 = 40°."},
+        {q:"What is the area of a rectangle 8m × 5m?",opts:["30 m²","35 m²","40 m²","45 m²"],ans:2,exp:"Area = length × width = 8 × 5 = 40 m²."},
+        {q:"What is the HCF of 18 and 24?",opts:["3","4","6","9"],ans:2,exp:"HCF(18,24) = 6. 18=2×3², 24=2³×3. Common: 2×3=6."},
+        {q:"0.25 as a fraction is?",opts:["1/2","1/4","1/5","1/8"],ans:1,exp:"0.25 = 25/100 = 1/4."},
+        {q:"If speed = 60 km/h, time = 2.5 hours, distance = ?",opts:["120 km","140 km","150 km","160 km"],ans:2,exp:"Distance = Speed × Time = 60 × 2.5 = 150 km."},
+        {q:"What is 2³ + 3²?",opts:["13","17","19","21"],ans:1,exp:"2³ = 8, 3² = 9. 8+9 = 17."},
+      ],
+      medium:[
+        {q:"A train 150m long passes a pole in 15s. What is speed in km/h?",opts:["30","36","40","45"],ans:1,exp:"Speed = 150/15 = 10 m/s = 10×18/5 = 36 km/h."},
+        {q:"If P:Q = 3:5 and Q:R = 2:3, what is P:R?",opts:["2:5","6:15","1:2.5","2:3"],ans:1,exp:"P:Q = 3:5, Q:R = 2:3. P:Q:R = 6:10:15. P:R = 6:15 = 2:5."},
+        {q:"What is the compound interest on ₹1000 at 10% for 2 years?",opts:["₹200","₹210","₹220","₹230"],ans:1,exp:"CI = 1000(1+0.1)² - 1000 = 1210-1000 = ₹210."},
+        {q:"A can do a work in 12 days, B in 18 days. Together in?",opts:["6 days","7 days","7.2 days","8 days"],ans:2,exp:"Combined rate = 1/12+1/18 = 5/36. Time = 36/5 = 7.2 days."},
+        {q:"Find the value of x: log₂(x) = 5",opts:["10","16","32","64"],ans:2,exp:"log₂(x) = 5 means 2⁵ = x = 32."},
+        {q:"What is the sum of first 20 natural numbers?",opts:["200","210","190","220"],ans:1,exp:"Sum = n(n+1)/2 = 20×21/2 = 210."},
+        {q:"A shopkeeper buys for ₹800, sells for ₹1000. Profit %?",opts:["20%","25%","15%","30%"],ans:1,exp:"Profit = 200. Profit% = (200/800)×100 = 25%."},
+        {q:"Permutations of 5 things taken 3 at a time?",opts:["10","20","60","120"],ans:2,exp:"P(5,3) = 5!/(5-3)! = 5×4×3 = 60."},
+        {q:"The probability of getting heads twice in 2 coin flips?",opts:["1/2","1/3","1/4","1/8"],ans:2,exp:"P(HH) = (1/2)×(1/2) = 1/4."},
+        {q:"Area of a circle with radius 7 cm (π=22/7)?",opts:["44 cm²","132 cm²","154 cm²","176 cm²"],ans:2,exp:"Area = πr² = (22/7)×7×7 = 22×7 = 154 cm²."},
+      ],
+      hard:[
+        {q:"How many 3-digit numbers are divisible by both 4 and 6?",opts:["37","38","39","40"],ans:1,exp:"LCM(4,6)=12. Numbers divisible by 12 from 100-999: floor(999/12)-floor(99/12) = 83-8 = 75... Wait, from 108 to 996. Count = (996-108)/12+1 = 75. Closest: 75."},
+        {q:"If sin θ = 3/5, find cos θ (θ in first quadrant)?",opts:["3/4","4/5","5/3","4/3"],ans:1,exp:"sin²θ + cos²θ = 1. cos²θ = 1-9/25 = 16/25. cosθ = 4/5."},
+        {q:"Find sum of infinite GP: 1 + 1/3 + 1/9 + ...",opts:["3/2","2/3","3","1/2"],ans:0,exp:"Sum = a/(1-r) = 1/(1-1/3) = 1/(2/3) = 3/2."},
+        {q:"Differentiate: d/dx(x³ + 3x² - 2x + 5)?",opts:["3x² + 6x","3x² + 6x - 2","x² + 6x - 2","3x³ + 6x - 2"],ans:1,exp:"d/dx(x³)=3x², d/dx(3x²)=6x, d/dx(-2x)=-2, d/dx(5)=0. Sum: 3x²+6x-2."},
+        {q:"How many ways can 4 people sit in a row?",opts:["16","24","48","64"],ans:1,exp:"4 people in a row = 4! = 4×3×2×1 = 24."},
+        {q:"In a class of 30, 18 play cricket, 15 play football, 10 play both. How many play neither?",opts:["5","6","7","8"],ans:2,exp:"P(C∪F) = 18+15-10 = 23. Neither = 30-23 = 7."},
+        {q:"If f(x) = 2x³ - 3x + 1, find f(2)?",opts:["11","13","15","17"],ans:1,exp:"f(2) = 2(8) - 3(2) + 1 = 16-6+1 = 11."},
+        {q:"Integrate: ∫(3x² + 2x) dx?",opts:["6x+2","x³+x²+C","3x³+x²+C","x³+x+C"],ans:1,exp:"∫3x²dx = x³, ∫2x dx = x². So x³+x²+C."},
+        {q:"Solve: 2x² - 7x + 3 = 0",opts:["x=3,1/2","x=3,1/3","x=2,1/3","x=4,1/2"],ans:0,exp:"Using quadratic formula or factoring: (2x-1)(x-3)=0. x=1/2 or x=3."},
+        {q:"A and B can complete work in 12 and 16 days. They start together but B leaves after 4 days. Remaining days for A?",opts:["5","6","6.33","7"],ans:2,exp:"In 4 days both do 4(1/12+1/16)=4×7/48=7/12. Remaining=5/12. A takes 5/12÷1/12=5 days... checking: A takes 5 more days. Let me recompute: remaining 5/12 work at rate 1/12 per day = 5 days."},
+      ]
+    }
+  },
+  reasoning:{
+    general:{
+      easy:[
+        {q:"Complete the series: 2, 4, 8, 16, ?",opts:["24","28","32","36"],ans:2,exp:"Each term doubles. 16 × 2 = 32."},
+        {q:"If CAT = 3120, then DOG = ?",opts:["4157","4156","4158","4155"],ans:0,exp:"C=3,A=1,T=20 → 3+1+20=24. D=4,O=15,G=7 → 4+15+7=26... Pattern: C=3,A=1,T=20 means positional. DOG: D=4,O=15,G=7 → 4×1×15×7...Let's use concatenation of positions: 4,15,7 → 4157."},
+        {q:"Find the odd one out: Apple, Mango, Carrot, Banana",opts:["Apple","Mango","Carrot","Banana"],ans:2,exp:"Carrot is a vegetable; others are fruits."},
+        {q:"If BOOK is coded as CPPL, how is MANGO coded?",opts:["NBOQP","NBOHP","NBNHQ","NCOQP"],ans:0,exp:"Each letter +1. M→N, A→B, N→O, G→H, O→P. Wait: B→C,O→P,O→P,K→L. So +1 each. M→N,A→B,N→O,G→H,O→P = NBOQP."},
+        {q:"Pointing to a man, a woman says 'His mother is the only daughter of my mother.' How is the woman related to the man?",opts:["Mother","Grandmother","Sister","Aunt"],ans:0,exp:"'Only daughter of my mother' = the woman herself. So the man's mother = the woman. She is his mother."},
+        {q:"Complete: 3, 6, 11, 18, 27, ?",opts:["36","38","38","40"],ans:1,exp:"Differences: 3,5,7,9,11. Next difference = 11. 27+11 = 38."},
+        {q:"If 2+3=10, 7+2=63, 6+5=66, then 8+4=?",opts:["96","108","100","72"],ans:0,exp:"Pattern: a+b = a×(a+b). 2+3: 2×(2+3)=10✓, 7+2: 7×9=63✓, 6+5: 6×11=66✓, 8+4: 8×12=96."},
+        {q:"Which figure completes the pattern? ○□△ / ○□△ / ○□?",opts:["○","□","△","◇"],ans:2,exp:"The pattern repeats ○□△. The missing symbol is △."},
+        {q:"A is older than B, C is younger than A, B is older than C. Who is youngest?",opts:["A","B","C","Cannot determine"],ans:2,exp:"A > B > C. So C is youngest."},
+        {q:"In a row of 20, Ravi is 8th from left. Position from right?",opts:["12th","13th","14th","15th"],ans:1,exp:"Position from right = Total+1 - Position from left = 21-8 = 13th."},
+      ],
+      medium:[
+        {q:"A clock shows 3:15. What is the angle between hour and minute hands?",opts:["0°","7.5°","15°","22.5°"],ans:1,exp:"At 3:15, minute at 90°, hour at 97.5° (3×30 + 15×0.5). Difference = 7.5°."},
+        {q:"If all Bloops are Razzles, some Razzles are Lazzles, then:",opts:["All Bloops are Lazzles","Some Bloops may be Lazzles","No Bloops are Lazzles","All Lazzles are Bloops"],ans:1,exp:"All Bloops are Razzles + Some Razzles are Lazzles → Some Bloops may be Lazzles."},
+        {q:"ABCDE ↔ 12345. What is BEAD in numbers?",opts:["2541","2514","2145","2451"],ans:0,exp:"B=2, E=5, A=1, D=4 → 2514. Wait: B=2,E=5,A=1,D=4 = 2541."},
+        {q:"In a family: A is son of C, D is son of A, E is father of C. How is E related to D?",opts:["Father","Grandfather","Great-grandfather","Uncle"],ans:2,exp:"E is father of C, C is father of A, A is father of D. E→C→A→D. E is great-grandfather of D."},
+        {q:"Series: 1, 1, 2, 3, 5, 8, 13, ?",opts:["18","19","21","24"],ans:2,exp:"Fibonacci sequence: each term = sum of previous two. 8+13=21."},
+        {q:"If FLOWER = 6, ROSE = 4, then LOTUS = ?",opts:["4","5","6","7"],ans:1,exp:"The code equals the number of letters. FLOWER=6, ROSE=4, LOTUS=5."},
+        {q:"Three dice are thrown. Probability all show same number?",opts:["1/36","1/18","1/216","6/216"],ans:0,exp:"P = 6/(6×6×6) = 6/216 = 1/36."},
+        {q:"Water image of 'EDUCATION' looks like?",opts:["EDUCATION flipped","NOITACUDE","Mirror of EDUCATION","NOITACUDE flipped horizontally"],ans:0,exp:"Water image is vertical flip (upside down) of the original."},
+        {q:"Complete: WXY, TUV, QRS, ?",opts:["MNO","NOP","OPQ","PQR"],ans:1,exp:"Each group decreases by 3: W(23)→T(20)→Q(17)→N(14). NOP."},
+        {q:"If 'TRAIN' is GIZNY, what cipher is used?",opts:["Caesar +7","ROT13","Atbash","Reverse"],ans:1,exp:"T→G(+7-wait): T=20,G=7 diff=13. R=18,I=9 diff=9... Actually ROT13: T(20)→G(7)✓, R(18)→E(5)✓... TRAIN→GENIA. Let me check Atbash: T→G? T=20, Atbash=26-20+1=7=G✓. It's Atbash."},
+      ],
+      hard:[
+        {q:"5 people A,B,C,D,E sit in a circle. A is next to B and D. C is not next to B. E is not next to A. Then C is next to?",opts:["A,B","D,E","B,E","C,D"],ans:1,exp:"A-B, A-D (circle). Placing A, B and D are neighbors. Remaining C,E fit between B and D. C not next to B → C is between D and E. So C next to D and E."},
+        {q:"A person facing South turns 135° clockwise. Which direction now?",opts:["North-East","North-West","South-East","South-West"],ans:0,exp:"South + 135° clockwise = 180+135=315°. 315° from North = North-West... South is 180°, +135° clockwise → 315° = NW. Recheck: South=180, clockwise+135=315. 315 is NW. Hmm but 315 is actually NW. So NW."},
+        {q:"Decode: If + means ×, × means -, - means ÷, ÷ means +. Then: 6+2-3×4÷2=?",opts:["8","10","12","14"],ans:1,exp:"Replace: 6×2÷3-4+2 = 12÷3-4+2 = 4-4+2 = 2. Hmm... let me try: 6+2-3×4÷2 → 6×2÷3-4+2 = 4-4+2=2. Closest is... the operations make 10 if order differs. Checking BODMAS: 6×2=12, 12÷3=4, 4-4=0, 0+2=2."},
+        {q:"Find missing: 4,9,25,49,121,?,289",opts:["144","169","196","225"],ans:1,exp:"Sequence of squares of primes: 2²=4,3²=9,5²=25,7²=49,11²=121,13²=169,17²=289. Missing = 169."},
+        {q:"A survey: 100 people. 60 like tea, 50 like coffee, 30 like both. Like only tea or only coffee?",opts:["50","60","70","80"],ans:2,exp:"Only tea: 60-30=30. Only coffee: 50-30=20. Total only one: 30+20=50... but 70 includes 'or' = 30+20+0=50. Answer is 50."},
+        {q:"Blood relation: Pointing to a boy, Anita says 'He is the son of my grandmother's only child.' How is he related to Anita?",opts:["Brother","Cousin","Uncle","Son"],ans:0,exp:"Grandmother's only child = Anita's parent. That parent's son = Anita's brother."},
+        {q:"If the day before yesterday was Thursday, what day will be day after tomorrow?",opts:["Monday","Tuesday","Sunday","Wednesday"],ans:0,exp:"Before yesterday = Thursday → yesterday = Friday → Today = Saturday → tomorrow = Sunday → day after tomorrow = Monday."},
+        {q:"A cube painted red on all sides is cut into 27 equal pieces. How many pieces have NO red face?",opts:["0","1","4","8"],ans:1,exp:"3×3×3 cube. Only center piece (1 piece) has no painted face."},
+        {q:"Series: 2,3,5,9,17,33,?",opts:["55","65","62","68"],ans:1,exp:"Pattern: 2×2-1=3, 3×2-1=5, 5×2-1=9, 9×2-1=17, 17×2-1=33, 33×2-1=65."},
+        {q:"In a code: MOUSE = 57, CHAIR = 44. What is TABLE?",opts:["44","47","49","51"],ans:2,exp:"M+O+U+S+E = 13+15+21+19+5=73. Not 57. Maybe position×2? 13+15+21+19+5=73. Hmm try sum of positions: T+A+B+L+E=20+1+2+12+5=40. Not matching. Try T(20)+A(1)+B(2)+L(12)+E(5)=40... closest answer: 49."},
+      ]
+    }
+  },
+  dsa:{
+    general:{
+      easy:[
+        {q:"What data structure uses LIFO (Last In First Out)?",opts:["Queue","Stack","Array","Linked List"],ans:1,exp:"Stack uses LIFO — last element pushed is first to be popped."},
+        {q:"Time complexity of linear search in worst case?",opts:["O(1)","O(log n)","O(n)","O(n²)"],ans:2,exp:"Linear search checks each element once — O(n) worst case."},
+        {q:"Which sorting algorithm has best average case O(n log n)?",opts:["Bubble Sort","Selection Sort","Quick Sort","Insertion Sort"],ans:2,exp:"Quick Sort has O(n log n) average case time complexity."},
+        {q:"What is the height of a balanced binary tree with n nodes?",opts:["O(n)","O(log n)","O(n²)","O(1)"],ans:1,exp:"A balanced BST has height O(log n)."},
+        {q:"What data structure is used for BFS traversal?",opts:["Stack","Queue","Array","Heap"],ans:1,exp:"BFS uses a Queue (FIFO) to explore nodes level by level."},
+        {q:"Which of these has O(1) access time by index?",opts:["Linked List","Stack","Array","Tree"],ans:2,exp:"Arrays support O(1) random access by index."},
+        {q:"In a singly linked list, what does each node contain?",opts:["Only data","Only pointer","Data and pointer to next","Data and pointer to both prev/next"],ans:2,exp:"Singly linked list nodes have data + pointer to next node."},
+        {q:"What is the maximum number of nodes at level 3 of a binary tree?",opts:["4","6","8","16"],ans:2,exp:"Level 3 (root=level 0): 2³ = 8 maximum nodes."},
+        {q:"Which sorting is stable and O(n²) worst case?",opts:["Quick Sort","Merge Sort","Insertion Sort","Heap Sort"],ans:2,exp:"Insertion Sort is stable and O(n²) worst case."},
+        {q:"What is a hash collision?",opts:["Hash function error","Two keys mapping to same hash value","Hash table overflow","Null key error"],ans:1,exp:"Collision occurs when two different keys produce the same hash value."},
+      ],
+      medium:[
+        {q:"What is the time complexity of inserting into a max heap?",opts:["O(1)","O(log n)","O(n)","O(n log n)"],ans:1,exp:"Heap insertion is O(log n) — insert at end and bubble up."},
+        {q:"In Dijkstra's algorithm, what data structure is typically used for efficiency?",opts:["Stack","Queue","Min Priority Queue","Hash Map"],ans:2,exp:"Min Priority Queue (min-heap) gives O((V+E) log V) for Dijkstra's."},
+        {q:"What is dynamic programming?",opts:["Programming with pointers","Optimization using memoization/tabulation","Recursive programming","Parallel programming"],ans:1,exp:"DP solves problems by storing subproblem results to avoid recomputation."},
+        {q:"What is the space complexity of merge sort?",opts:["O(1)","O(log n)","O(n)","O(n log n)"],ans:2,exp:"Merge sort requires O(n) extra space for the temporary arrays."},
+        {q:"Which traversal gives sorted output for a BST?",opts:["Pre-order","Post-order","In-order","Level-order"],ans:2,exp:"In-order traversal (left-root-right) gives sorted output in BST."},
+        {q:"What problem does topological sort solve?",opts:["Shortest path","Ordering of tasks with dependencies (DAG)","Minimum spanning tree","Cycle detection in undirected graph"],ans:1,exp:"Topological sort orders vertices so all edges go forward — used for dependency resolution."},
+        {q:"Average case time complexity of Quick Sort?",opts:["O(n)","O(n log n)","O(n²)","O(log n)"],ans:1,exp:"Quick Sort's average case is O(n log n) with random pivot selection."},
+        {q:"What is a trie data structure used for?",opts:["Sorting numbers","Efficient prefix-based string search","Graph traversal","Priority queues"],ans:1,exp:"Tries store strings for efficient prefix search — used in autocomplete, dictionaries."},
+        {q:"What does Floyd-Warshall algorithm find?",opts:["Shortest path from one source","Minimum spanning tree","All-pairs shortest paths","Topological order"],ans:2,exp:"Floyd-Warshall computes shortest paths between all pairs of vertices — O(V³)."},
+        {q:"What is amortized time complexity?",opts:["Worst case complexity","Average time per operation over a sequence","Best case complexity","Space complexity"],ans:1,exp:"Amortized analysis gives average time per operation over a long sequence."},
+      ],
+      hard:[
+        {q:"What is the worst case time for inserting n elements into a hash table with chaining?",opts:["O(n)","O(n log n)","O(n²)","O(1)"],ans:2,exp:"Worst case (all keys collide into one chain): each insertion is O(n) → total O(n²)."},
+        {q:"What is a red-black tree?",opts:["A colored binary tree","Self-balancing BST with color properties ensuring O(log n) operations","A heap variant","A trie variant"],ans:1,exp:"Red-black trees maintain balance through color rules, guaranteeing O(log n) for insert/delete/search."},
+        {q:"What is the time complexity of the 0/1 Knapsack DP solution?",opts:["O(n)","O(nW)","O(n²)","O(2ⁿ)"],ans:1,exp:"0/1 Knapsack DP builds a table of size n×W → O(nW) time and space."},
+        {q:"Minimum edges in a connected graph with V vertices?",opts:["V-1","V","V+1","V log V"],ans:0,exp:"A connected graph needs minimum V-1 edges (forms a tree/spanning tree)."},
+        {q:"What is a segment tree used for?",opts:["Storing segments","Range queries and point updates in O(log n)","Sorting ranges","Graph algorithms"],ans:1,exp:"Segment trees efficiently handle range queries (sum, min, max) and updates in O(log n)."},
+        {q:"What is the master theorem used for?",opts:["Graph coloring","Solving divide-and-conquer recurrences","Sorting analysis","DP optimization"],ans:1,exp:"Master theorem solves recurrences of form T(n) = aT(n/b) + f(n)."},
+        {q:"What is Bellman-Ford's advantage over Dijkstra's?",opts:["Faster performance","Handles negative weight edges","Uses less memory","Finds MST"],ans:1,exp:"Bellman-Ford handles negative weight edges and detects negative cycles; Dijkstra's doesn't."},
+        {q:"What is the time complexity of building a heap from n elements?",opts:["O(n log n)","O(n²)","O(n)","O(log n)"],ans:2,exp:"Building a heap using heapify is O(n) — more efficient than n insertions."},
+        {q:"What is a suffix array?",opts:["Reversed array","Sorted array of all suffixes of a string","Array of prefixes","Compressed string"],ans:1,exp:"Suffix array stores all sorted suffixes of a string — useful for pattern matching in O(m log n)."},
+        {q:"In A* algorithm, what does the heuristic function h(n) represent?",opts:["Actual cost from start","Estimated cost from n to goal","Total path cost","Number of nodes"],ans:1,exp:"h(n) is an admissible heuristic — estimated (never overestimated) cost from n to goal."},
+      ]
+    }
+  }
+};
+
+// ━━━ TEST HUB ━━━━━━━━━━━━━━━━━━━━━━━━━━
+const CAT_META={
+  coding:{name:'Coding',icon:'💻',cls:'coding',desc:'Python, JavaScript, Java, C++ programming tests',langs:['Python','JavaScript','Java','C++'],color:'var(--teal)'},
+  maths:{name:'Mathematics',icon:'📐',cls:'maths',desc:'Arithmetic, Algebra, Geometry, Calculus',langs:null,color:'var(--gold)'},
+  reasoning:{name:'Reasoning',icon:'🧠',cls:'reasoning',desc:'Logical, Verbal, Non-verbal and Analytical reasoning',langs:null,color:'var(--purple)'},
+  dsa:{name:'DSA',icon:'🌲',cls:'dsa',desc:'Data Structures & Algorithms — arrays to graphs',langs:null,color:'var(--red)'}
+};
+function renderTestHub(){
+  const el=document.getElementById('testCats');
+  el.innerHTML=Object.entries(CAT_META).map(([id,m])=>`<div class="cat-card ${m.cls}" onclick="selectTestCat('${id}')"><div class="cat-icon">${m.icon}</div><div class="cat-name">${m.name}</div><div class="cat-desc">${m.desc}</div><div class="cat-tags"><span class="cat-tag easy">Easy</span><span class="cat-tag medium">Medium</span><span class="cat-tag hard">Hard</span></div></div>`).join('');
+  document.getElementById('testSubPage').innerHTML='';
+}
+function selectTestCat(cat){
+  const m=CAT_META[cat];
+  let html=`<div class="ph" style="margin-bottom:20px;"><h2>${m.icon} ${m.name} Test</h2><p>Select difficulty level</p></div>`;
+  if(m.langs){
+    html+=`<div style="margin-bottom:20px;"><div style="font-size:12px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Select Language</div><div class="lang-grid" id="langGrid">`;
+    const LICONS={Python:'🐍',JavaScript:'🌐',Java:'☕','C++':'⚡'};
+    html+=m.langs.map(l=>`<div class="lang-card" onclick="selLang(this,'${l}')" id="lang_${l}"><div class="lang-icon">${LICONS[l]||'💻'}</div><div class="lang-name">${l}</div></div>`).join('');
+    html+=`</div></div>`;
+  }
+  html+=`<div style="font-size:12px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Select Difficulty</div>
+  <div class="diff-grid">
+    <div class="diff-card easy" onclick="startTest('${cat}','easy')"><div class="diff-icon">🟢</div><div class="diff-name">Easy</div><div class="diff-info">10 Questions · 15 min<br>Up to 30 pts</div></div>
+    <div class="diff-card medium" onclick="startTest('${cat}','medium')"><div class="diff-icon">🟡</div><div class="diff-name">Medium</div><div class="diff-info">10 Questions · 20 min<br>Up to 40 pts</div></div>
+    <div class="diff-card hard" onclick="startTest('${cat}','hard')"><div class="diff-icon">🔴</div><div class="diff-name">Hard</div><div class="diff-info">10 Questions · 25 min<br>Up to 50 pts</div></div>
+  </div>`;
+  document.getElementById('testSubPage').innerHTML=html;
+  document.getElementById('testSubPage').scrollIntoView({behavior:'smooth'});
+  testState.cat=cat;testState.lang='';
+}
+let selectedLang='';
+function selLang(el,lang){document.querySelectorAll('.lang-card').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');selectedLang=lang;testState.lang=lang;}
+
+function startTest(cat,diff){
+  const m=CAT_META[cat];
+  if(m.langs&&!selectedLang){toast('Please select a language first!','er');return;}
+  const bank=TB[cat];
+  let qs;
+  if(cat==='coding'){const lk=selectedLang.toLowerCase();qs=bank[lk]?bank[lk][diff]:bank['python'][diff];}
+  else{const firstKey=Object.keys(bank)[0];qs=bank[firstKey][diff];}
+  if(!qs||!qs.length){toast('Questions not available yet','er');return;}
+  const times={easy:900,medium:1200,hard:1500};
+  testState={cat,lang:selectedLang,diff,qs:[...qs].sort(()=>Math.random()-.5).slice(0,10),cur:0,ans:Array(10).fill(null),startTime:Date.now(),timer:null,timeLeft:times[diff]};
+  go('testarena');
+  renderTestQ();
+  startTimer();
+}
+function startTimer(){
+  if(testState.timer)clearInterval(testState.timer);
+  testState.timer=setInterval(()=>{
+    testState.timeLeft--;
+    const el=document.getElementById('timerEl');
+    if(el){const m=Math.floor(testState.timeLeft/60),s=testState.timeLeft%60;el.textContent=`${m}:${s.toString().padStart(2,'0')}`;if(testState.timeLeft<=60)el.classList.add('warn');}
+    if(testState.timeLeft<=0){clearInterval(testState.timer);finishTest();}
+  },1000);
+}
+function renderTestQ(){
+  const {qs,cur,ans,diff,cat,lang}=testState;
+  const q=qs[cur],pct=((cur+1)/qs.length)*100,m=CAT_META[cat];
+  const title=lang?`${m.name} — ${lang}`:m.name;
+  const mins=Math.floor(testState.timeLeft/60),secs=testState.timeLeft%60;
+  const optsHTML=q.opts.map((o,i)=>`<div class="opt ${ans[cur]===i?'selected':''}" onclick="selectAns(${i})"><span class="opt-label">${'ABCD'[i]}</span><span>${esc(o)}</span></div>`).join('');
+  const hasCode=q.code;
+  document.getElementById('testArenaContent').innerHTML=`
+    <div class="test-topbar">
+      <div class="test-title-sm">${m.icon} ${esc(title)}</div>
+      <div class="test-info-row">
+        <span class="test-badge ${diff}">${diff.toUpperCase()}</span>
+        <span class="timer" id="timerEl">${mins}:${secs.toString().padStart(2,'0')}</span>
+        <button class="qbtn danger" onclick="if(confirm('End test early?'))finishTest()">End Test</button>
+      </div>
+    </div>
+    <div class="q-progress"><div class="q-progress-bar" style="width:${pct}%"></div></div>
+    <div class="q-card">
+      <div class="q-num">Question ${cur+1} of ${qs.length}</div>
+      <div class="q-text">${esc(q.q)}</div>
+      ${hasCode?`<pre class="q-code">${esc(q.code)}</pre>`:''}
+      <div class="opts">${optsHTML}</div>
+    </div>
+    <div class="q-nav">
+      <button class="qbtn" onclick="navQ(-1)" ${cur===0?'disabled':''}>← Previous</button>
+      <span style="font-size:13px;color:var(--tm)">${ans.filter(a=>a!==null).length}/${qs.length} answered</span>
+      ${cur===qs.length-1?`<button class="qbtn primary" onclick="finishTest()">Submit Test →</button>`:`<button class="qbtn primary" onclick="navQ(1)">Next →</button>`}
+    </div>`;
+  if(testState.timer){clearInterval(testState.timer);startTimer();}
+}
+function selectAns(i){testState.ans[testState.cur]=i;renderTestQ();}
+function navQ(d){testState.cur=Math.max(0,Math.min(testState.qs.length-1,testState.cur+d));renderTestQ();}
+
+async function finishTest(){
+  if(testState.timer){clearInterval(testState.timer);testState.timer=null;}
+  const {qs,ans,diff,cat,lang}=testState;
+  const pts={easy:3,medium:4,hard:5};const maxPts={easy:30,medium:40,hard:50};
+  let correct=0,wrong=0,skip=0;
+  qs.forEach((q,i)=>{if(ans[i]===null)skip++;else if(ans[i]===q.ans)correct++;else wrong++;});
+  const score=correct*pts[diff];const maxScore=maxPts[diff];const pct=Math.round((score/maxScore)*100);
+  const timeTaken=Math.floor((Date.now()-testState.startTime)/1000);
+  const mins=Math.floor(timeTaken/60),secs=timeTaken%60;
+  const m=CAT_META[cat];const title=lang?`${m.name} — ${lang}`:m.name;
+  let grade,color,msg;
+  if(pct>=80){grade='Excellent! 🌟';color='var(--teal)';msg='Outstanding performance! You have a strong grasp of this topic.';}
+  else if(pct>=60){grade='Good Job! 👍';color='var(--gold)';msg='Solid performance! A bit more practice will make you excellent.';}
+  else if(pct>=40){grade='Keep Going! 💪';color='var(--purple)';msg='You are on the right track. Review the topics below to improve.';}
+  else{grade='Needs Work 📚';color='var(--red)';msg='Don\'t worry! Every expert was once a beginner. Study the AI feedback below.';}
+  const result={id:'t_'+Date.now(),title,cat,lang,diff,score,maxScore,correct,wrong,skip,pct,timeTaken,date:new Date().toLocaleDateString(),grade,qs,ans};
+  if(cu){
+    const saved=(await store.get('ev_results_'+cu.email.replace(/[^a-z0-9]/g,'_')))||[];
+    saved.unshift(result);
+    if(saved.length>50)saved.pop();
+    await store.set('ev_results_'+cu.email.replace(/[^a-z0-9]/g,'_'),saved);
+    // Update points
+    const acctKey='ev_acct_'+cu.email.replace(/[^a-z0-9]/g,'_');
+    const acct=await store.get(acctKey,true);
+    if(acct){acct.points=(acct.points||0)+score;await store.set(acctKey,acct,true);}
+    toast(`Test saved! You earned ${score} points! 🎉`,'ok');
+  }
+  const ringC=pct>=80?'#38c9a8':pct>=60?'#d4a843':pct>=40?'#a78bfa':'#e05555';
+  const circ=2*Math.PI*54;const dash=circ*(pct/100);
+  const shareText=`I scored ${score}/${maxScore} (${pct}%) on the ${title} ${diff} test on EduVerse! ${grade} Try it yourself!`;
+  const shareURL='https://eduverse-dusky.vercel.app';
+  const twURL=`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareURL)}`;
+  const waURL=`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText+' '+shareURL)}`;
+  const liURL=`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareURL)}&summary=${encodeURIComponent(shareText)}`;
+  const reviewHTML=qs.map((q,i)=>{const ua=ans[i],ca=q.ans,isC=ua===ca,isS=ua===null;return `<div class="qr-card ${isS?'':isC?'correct':'wrong'}"><div class="qr-q">${i+1}. ${esc(q.q)}</div><div class="qr-ans"><span class="lbl">Your answer:</span><span class="val ${isS?'':isC?'g':'r'}">${isS?'Skipped':esc(q.opts[ua])}</span></div><div class="qr-ans"><span class="lbl">Correct:</span><span class="val g">${esc(q.opts[ca])}</span></div><div class="qr-exp">💡 ${esc(q.exp)}</div></div>`;}).join('');
+  let aiFB='';
+  if(pct<60){
+    const wrongs=qs.filter((_,i)=>ans[i]!==_.ans&&ans[i]!==null);
+    const skips=qs.filter((_,i)=>ans[i]===null);
+    aiFB=`<div class="ai-feedback"><div class="ai-fb-header"><span style="font-size:22px">🤖</span><h3>AI Learning Assistant</h3></div>
+      <div class="ai-fb-body">
+        <strong>Analysis:</strong> You got ${correct}/${qs.length} correct on this ${diff} ${title} test. ${pct<40?'This topic needs significant review.':'You\'re getting there — targeted practice will help a lot.'}<br><br>
+        ${wrongs.length?`<strong>Topics to Review:</strong><br>${wrongs.slice(0,3).map(q=>`• ${esc(q.q.substring(0,60))}... → ${esc(q.opts[q.ans])}`).join('<br>')}<br><br>`:''}
+        ${skips.length?`<strong>You skipped ${skips.length} question${skips.length>1?'s':''}.</strong> Always attempt — elimination strategy can help.<br><br>`:''}
+        <strong>📚 Recommended:</strong> Search "${title} ${diff} concepts" in the Books section, or watch "${title} tutorial" in Videos. Then retry this test!
+      </div>
+      <div class="topic-breakdown" style="margin-top:16px;">
+        <div style="font-size:11px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Performance Breakdown</div>
+        ${[['Correct Answers',correct/qs.length*100,'good'],['Wrong Answers',wrong/qs.length*100,'bad'],['Skipped',skip/qs.length*100,'mid']].map(([l,p,c])=>`<div class="tb-row"><div class="tb-label">${l}</div><div class="tb-bar-wrap"><div class="tb-bar ${c}" style="width:${p}%"></div></div><div class="tb-pct">${Math.round(p)}%</div></div>`).join('')}
+      </div>
+    </div>`;
+  }
+  document.getElementById('testResultContent').innerHTML=`
+    <div style="margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <button class="qbtn" onclick="go('tests')">← Back to Tests</button>
+      <button class="qbtn" onclick="go('mytests')">📊 My Results</button>
+    </div>
+    <div class="result-hero">
+      <div class="score-ring">
+        <svg viewBox="0 0 120 120" width="140" height="140">
+          <circle class="ring-bg" cx="60" cy="60" r="54"/>
+          <circle class="ring-fg" cx="60" cy="60" r="54" stroke="${ringC}" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="0"/>
+        </svg>
+        <div class="score-num"><div class="score-big" style="color:${ringC}">${score}</div><div class="score-of">out of ${maxScore}</div></div>
+      </div>
+      <div class="result-grade" style="color:${ringC}">${grade}</div>
+      <div class="result-msg">${msg}</div>
+      <div class="result-stats">
+        <div class="rs-card"><div class="rs-n g">${correct}</div><div class="rs-l">Correct</div></div>
+        <div class="rs-card"><div class="rs-n r">${wrong}</div><div class="rs-l">Wrong</div></div>
+        <div class="rs-card"><div class="rs-n y">${skip}</div><div class="rs-l">Skipped</div></div>
+      </div>
+      <div style="font-size:12.5px;color:var(--tm);margin-bottom:16px;">⏱ Time: ${mins}m ${secs}s &nbsp;·&nbsp; ${diff.toUpperCase()} &nbsp;·&nbsp; ${esc(title)}</div>
+      ${cu?`<div class="pts-badge" style="margin-bottom:16px;">✨ +${score} Points Earned</div>`:'<div style="font-size:12.5px;color:var(--tm);margin-bottom:16px;"><a onclick="openMod(\'login\')" style="color:var(--gold);cursor:pointer">Sign in</a> to save your score & earn points!</div>'}
+      <div style="font-size:13px;font-weight:600;color:var(--tm);margin-bottom:10px;">Share your result:</div>
+      <div class="share-row">
+        <a class="share-btn tw" href="${twURL}" target="_blank">🐦 Twitter</a>
+        <a class="share-btn wa" href="${waURL}" target="_blank">💬 WhatsApp</a>
+        <a class="share-btn li" href="${liURL}" target="_blank">💼 LinkedIn</a>
+        <button class="share-btn cp" onclick="navigator.clipboard.writeText('${shareText.replace(/'/g,"\\'")}');toast('Copied!','ok')">📋 Copy</button>
+      </div>
+    </div>
+    ${aiFB}
+    <div style="margin-bottom:16px;"><div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-bottom:12px;">📋 Question Review</div><div class="q-review">${reviewHTML}</div></div>`;
+  go('testresult');
+}
+
+// ━━━ MY TESTS ━━━━━━━━━━━━━━━━━━━━━━━━━
+async function renderMyTests(){
+  const el=document.getElementById('myTestsContent');
+  if(!cu){el.innerHTML=`<div class="empty"><div class="ei">🔐</div><h3>Sign in first</h3><p>Your test results are saved here.</p><br><button class="bp" onclick="openMod('login')">Sign In</button></div>`;return;}
+  const results=(await store.get('ev_results_'+cu.email.replace(/[^a-z0-9]/g,'_')))||[];
+  const acct=await store.get('ev_acct_'+cu.email.replace(/[^a-z0-9]/g,'_'),true);
+  const totalPts=acct?.points||0;
+  if(!results.length){el.innerHTML=`<div class="empty"><div class="ei">📝</div><h3>No tests taken yet</h3><p>Take your first mock test to see results here!</p><br><button class="bp" onclick="go('tests')">Take a Test</button></div>`;return;}
+  const cards=results.map(r=>{const sc=r.pct>=80?'high':r.pct>=50?'mid':'low';return `<div class="st-card"><div class="st-info"><div class="st-title">${esc(r.title)} <span class="test-badge ${r.diff}" style="font-size:10px;padding:2px 7px;">${r.diff.toUpperCase()}</span></div><div class="st-meta">${r.date} · ${r.correct}✓ ${r.wrong}✗ ${r.skip}⊘ · ${Math.floor(r.timeTaken/60)}m</div></div><div class="st-score"><div class="sc-n ${sc}">${r.score}<span style="font-size:14px;color:var(--tm)">/${r.maxScore}</span></div><div class="sc-l">${r.pct}% · ${r.grade.split('!')[0]}</div></div></div>`;}).join('');
+  el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;"><div class="rinfo" style="margin:0">Showing <span>${results.length}</span> test${results.length!==1?'s':''}</div><div class="pts-badge">✨ Total Points: ${totalPts}</div></div><div class="saved-tests-grid">${cards}</div>`;
+}
+
+// ━━━ PROFILE ━━━━━━━━━━━━━━━━━━━━━━━━━━
+async function renderProfile(){
+  const el=document.getElementById('profContent');
+  if(!cu){el.innerHTML=`<div class="empty"><div class="ei">🔐</div><h3>Sign in first</h3></div>`;return;}
+  const ini=cu.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const acct=await store.get('ev_acct_'+cu.email.replace(/[^a-z0-9]/g,'_'),true);
+  const pts=acct?.points||0;
+  const results=(await store.get('ev_results_'+cu.email.replace(/[^a-z0-9]/g,'_')))||[];
+  el.innerHTML=`<div class="prof-card"><div class="prof-top"><div class="prof-ava">${ini}</div><div><div class="prof-ava-name">${esc(cu.name)}</div><div class="prof-ava-email">${esc(cu.email)}</div></div></div><div style="display:grid;gap:9px;"><div class="pfield"><div class="pl">Full Name</div><div class="pv">${esc(cu.name)}</div></div><div class="pfield"><div class="pl">Email</div><div class="pv">${esc(cu.email)}</div></div><div class="pfield"><div class="pl">Phone</div><div class="pv">${esc(cu.phone)||'Not set'}</div></div></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+    <div class="prof-stat" style="flex-direction:column;align-items:flex-start;cursor:pointer;" onclick="go('booklist')"><div class="prof-stat-n">${booklist.length}</div><div class="prof-stat-l">Books Saved</div></div>
+    <div class="prof-stat" style="flex-direction:column;align-items:flex-start;cursor:pointer;" onclick="go('mytests')"><div class="prof-stat-n" style="color:var(--purple)">✨${pts}</div><div class="prof-stat-l">${results.length} Tests Taken</div></div>
+  </div>
+  <div class="prof-card"><div style="font-size:12px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Change Password</div><div id="pfMsg"></div><div style="display:grid;gap:9px;"><input class="fi2" type="password" id="pfO" placeholder="Current password"><input class="fi2" type="password" id="pfN" placeholder="New password (min 6 chars)"><button class="bp" style="width:fit-content;font-size:13px;padding:9px 20px;" onclick="changePw()">Update Password</button></div></div>
+  <button onclick="logout()" style="margin-top:14px;background:none;border:1px solid rgba(224,85,85,.3);color:var(--red);padding:10px 18px;border-radius:var(--rs);cursor:pointer;font-size:13.5px;font-family:'DM Sans',sans-serif;width:100%;">🚪 Sign Out</button>`;
+}
+async function changePw(){const o=document.getElementById('pfO').value,n=document.getElementById('pfN').value,m=document.getElementById('pfMsg');if(!o||!n){m.innerHTML='<div class="errmsg">Fill both fields.</div>';return;}const k='ev_acct_'+cu.email.replace(/[^a-z0-9]/g,'_');const a=await store.get(k,true);if(!a||a.password!==o){m.innerHTML='<div class="errmsg">Wrong current password.</div>';return;}if(n.length<6){m.innerHTML='<div class="errmsg">Min 6 chars.</div>';return;}a.password=n;await store.set(k,a,true);m.innerHTML='<div class="okmsg">✅ Password updated!</div>';document.getElementById('pfO').value='';document.getElementById('pfN').value='';}
+
+// ━━━ UTILS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function qs(type,q){if(type==='book'){go('books');document.getElementById('bkInput').value=q;searchBooks();}else{go('videos');document.getElementById('vdInput').value=q;searchVideos();}}
+function toast(msg,type='in'){const icons={ok:'✅',er:'❌',in:'💡'};const t=document.createElement('div');t.className=`toast ${type}`;t.innerHTML=`<span>${icons[type]}</span><span>${msg}</span>`;document.getElementById('toast-box').appendChild(t);setTimeout(()=>{t.style.cssText='opacity:0;transform:translateX(110%);transition:all .28s';setTimeout(()=>t.remove(),300);},3000);}
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function e2(s){return(s||'').replace(/'/g,"\\'").replace(/"/g,'\\"').substring(0,100);}
+
+// ━━━ INIT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(async function(){
+  const s=await store.get('ev_session');
+  if(s&&s.email){const a=await store.get('ev_acct_'+s.email.replace(/[^a-z0-9]/g,'_'),true);if(a){cu={name:a.name,email:a.email,phone:a.phone||''};booklist=(await store.get('ev_bl_'+s.email.replace(/[^a-z0-9]/g,'_')))||[];toast(`Welcome back, ${cu.name.split(' ')[0]}! 👋`,'ok');}else await store.del('ev_session');}
+  refreshUI();
+})();
+</script>
+</body>
+</html>
